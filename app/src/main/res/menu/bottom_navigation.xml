@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home"
+        />
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/infos"
+        android:title="About Us"
+        />
+    <item
+        android:id="@+id/support"
+        android:title="Support"
+        android:icon="@drawable/customer"
+        />
+    <item
+        android:id="@+id/terms"
+        android:icon="@drawable/terms"
+        android:title="Terms &amp; Conditions"
+        />
+</menu>

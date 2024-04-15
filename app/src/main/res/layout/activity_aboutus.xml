@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Activity.AboutusActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text="Welcome to KBY (know About Yourself) where you can explore your truth
+
+At KBY, we believe in the power of self-awareness and personal growth. We understand that in today's fast-paced world, keeping track of your habits, activities and educational performance can be challenging. That's why we've created a comprehensive mobile application designed to empower you on your journey towards a better life.
+"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What We Do"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorGrayLight"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Our application serves as your personal companion, providing invaluable insights into your daily routines and activities. Whether you're aiming to improve your productivity or boost your confidence levels or enhance your overall well-being, KBY is here to support you every step of the way."
+                android:textStyle="bold"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Key Features"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorGrayLight"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text="Daily Insights: \n Gain deep insights into your habits and routines, allowing you to identify areas for improvement when you realise your mistakes through charts and track your progress over time"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text="Education Performance Monitoring: \n Monitor your educational performance effortlessly, where you will get to see how much hours you're effectively spending on daily basis for each subject"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text="Checklist: Keep a detailed record of your daily activities, from workouts, cycling, gym to meditation sessions and many more"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Groups"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorGrayLight"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text=" a.Open Circle (Public): Open Circle is for social interactions. Join a thriving community of like-minded individuals who are committed to self-improvement and personal growth. Share your experiences, learn from others and celebrate your achievements together"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text=" b.Personal (Private): Share your insights chart only to chosen people. It is fun showing it to your friends &amp; families about your daily doings"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:text="Data Privacy: Rest assured that your privacy and security are our top priorities. We adhere to stringent data protection measures to ensure that your personal information remains safe and secure at all times."
+                android:textStyle="bold"
+                android:textColor="@color/colorGrayLight"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mbn_circleColor="@color/Green"
+        android:layout_gravity="bottom"
+        app:mbn_countBackgroundColor="@color/Green"
+        android:visibility="gone"
+        app:mbn_countTextColor="#FFFFFF"
+        app:mbn_defaultIconColor="@color/table"
+        app:mbn_rippleColor="#3A3535"
+        app:mbn_selectedIconColor="#ffffff" />
+</LinearLayout>

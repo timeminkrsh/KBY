@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Activity.FamilyAddActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add People"
+            android:layout_marginStart="@dimen/payu_dimen_30dp"
+            android:layout_marginBottom="@dimen/payu_dimen_15dp"
+            android:layout_marginTop="@dimen/payu_dimen_15dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_50dp"
+                android:hint="Mobile Number/Mail-ID"
+                android:textColorHint="@color/white"
+                android:layout_marginStart="@dimen/payu_dimen_30dp"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"
+                android:textColor="@color/white"
+                android:background="@drawable/border_box" />
+
+            <Button
+                android:id="@+id/family_add"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/payu_dimen_50dp"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/button"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/payu_dimen_20dp"
+            android:layout_marginEnd="@dimen/payu_dimen_20dp"
+            android:layout_marginTop="@dimen/payu_dimen_30dp"
+            android:layout_marginBottom="@dimen/payu_dimen_30dp"
+            android:background="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_50dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_familylist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/addlist"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Activity.PersonalNewGroupActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lian_ed"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:weightSum="2"
+
+                android:layout_marginTop="@dimen/payu_dimen_20dp"
+                android:layout_marginBottom="@dimen/payu_dimen_20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/exist_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_box"
+                    android:text="Existing Groups"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/new_group"
+                    android:layout_width="match_parent"
+                    android:textAllCaps="false"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:background="@color/table"
+                    android:text="New Group"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/purple_200"
+                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                android:layout_marginTop="@dimen/payu_dimen_20dp"
+                android:layout_marginBottom="@dimen/payu_dimen_30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Group Name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/payu_dimen_30dp"
+                android:textSize="@dimen/payu_dimen_18sp"/>
+
+            <EditText
+                android:id="@+id/group_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_50dp"
+                android:hint="Group Name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_marginStart="@dimen/payu_dimen_30dp"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:background="@drawable/border_box" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Add People"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/payu_dimen_30dp"
+                android:textSize="@dimen/payu_dimen_18sp"/>
+
+            <EditText
+                android:id="@+id/mobile_num"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_50dp"
+                android:hint="Mobile Number/Email ID "
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/payu_dimen_30dp"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:background="@drawable/border_box" />
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="@dimen/payu_dimen_150dp"
+                android:layout_height="@dimen/payu_dimen_50dp"
+                android:text="Create"
+                android:layout_marginTop="@dimen/payu_dimen_15dp"
+                android:layout_marginBottom="@dimen/payu_dimen_15dp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/button"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

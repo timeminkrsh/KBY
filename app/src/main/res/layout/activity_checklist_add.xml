@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Activity.ChecklistAddActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Check List"
+            android:layout_marginStart="@dimen/payu_dimen_30dp"
+            android:layout_marginBottom="@dimen/payu_dimen_15dp"
+            android:layout_marginTop="@dimen/payu_dimen_15dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/check_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/payu_dimen_40dp"
+            android:hint="Checklist Name"
+            android:textColorHint="@color/white"
+            android:layout_marginStart="@dimen/payu_dimen_30dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/payu_dimen_30dp"
+            android:background="@drawable/border_box" />
+
+        <Button
+            android:id="@+id/create_check"
+            android:layout_width="@dimen/payu_dimen_120dp"
+            android:layout_height="@dimen/payu_dimen_40dp"
+            android:text="Create"
+            android:layout_marginTop="@dimen/payu_dimen_15dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:background="@drawable/button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Existing Check List"
+            android:layout_marginBottom="@dimen/payu_dimen_15dp"
+            android:layout_marginTop="@dimen/payu_dimen_15dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            android:background="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/payu_dimen_50dp"
+                android:orientation="vertical">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_checklist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/checkadd"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

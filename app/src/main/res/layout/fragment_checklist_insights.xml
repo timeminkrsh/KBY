@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".fragment.ChecklistInsightsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/payu_dimen_60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_60dp"
+                android:layout_marginTop="@dimen/payu_dimen_20dp"
+                android:weightSum="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/selectmonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bg_spinner"
+                    android:focusable="false"
+                    android:text="Oct "
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/payu_dimen_10dp"
+                    android:drawableEnd="@android:drawable/arrow_down_float"                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/selecttask"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/bg_spinner"
+                    android:focusable="false"
+                    android:text="Select Task"
+                    android:padding="@dimen/payu_dimen_10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutcalentar"
+                android:layout_below="@+id/layoutss"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/payu_dimen_15dp"
+                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000" />
+
+                <TableLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="✅"
+                            android:textSize="15sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/payu_dimen_10dp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/countone"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="0"
+                            android:textSize="15sp" />
+
+
+
+                    </TableRow>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/black" />
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="❌"
+                            android:textSize="15sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/payu_dimen_10dp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/countzero"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="0"
+                            android:textSize="15sp" />
+
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGraph"
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_300dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:elevation="10dp"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp">
+
+
+
+                <LinearLayout
+                    android:id="@+id/cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--Pie chart to display the data-->
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/piechart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="6dp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:id="@+id/relativelaouyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardViewGraph"
+            android:layout_marginTop="@dimen/payu_dimen_20dp"
+            android:visibility="gone"
+            >
+            <ImageView
+                android:id="@+id/out_share"
+                android:layout_below="@+id/recycle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/payu_dimen_5dp"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"
+                android:layout_gravity="end"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/shares"/>
+
+
+            <TextView
+                android:id="@+id/shares"
+                android:layout_width="@dimen/payu_dimen_120dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/editdate"
+                android:drawableEnd="@android:drawable/arrow_down_float"
+                android:focusable="false"
+                android:gravity="center"
+                android:hint="Share With"
+                android:paddingEnd="@dimen/payu_dimen_10dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+
+        </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_centerInParent="true"
+                android:src="@drawable/empty_box" />
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_edu"
+        android:title="Add/Remove user"/>
+
+    <item android:id="@+id/exit_edu"
+        android:title="Exit Group"/>
+
+    <item android:id="@+id/delete_edu"
+        android:title="Delete Group"/>
+
+</menu>

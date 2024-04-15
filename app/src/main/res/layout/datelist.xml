@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/payu_dimen_5dp"
+    android:background="@drawable/border_task"
+    >
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="@dimen/payu_dimen_70dp"
+        android:visibility="gone"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/textdate"
+        android:layout_width="@dimen/payu_dimen_80dp"
+        android:layout_height="@dimen/payu_dimen_40dp"
+        android:text=""
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/payu_dimen_15dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <View
+        android:id="@+id/viesss"
+        android:layout_width="2dp"
+        android:layout_toEndOf="@+id/textdate"
+        android:layout_height="@dimen/payu_dimen_70dp"
+        android:visibility="gone"
+        android:background="@color/black"/>
+
+    <Switch
+        android:id="@+id/switchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textdate"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/payu_dimen_10dp"
+        android:layout_marginTop="@dimen/payu_dimen_5dp"
+        android:layout_marginLeft="@dimen/payu_dimen_5dp"
+        android:layout_marginEnd="@dimen/payu_dimen_5dp"
+        android:layout_marginBottom="@dimen/payu_dimen_5dp"
+        android:background="#FBFBFB"
+        android:outlineSpotShadowColor="@color/white"
+        android:shadowColor="@color/white"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <View
+        android:id="@+id/vies"
+        android:layout_below="@+id/switchButton"
+        android:layout_width="@dimen/payu_dimen_110dp"
+        android:layout_height="2dp"
+        android:visibility="gone"
+
+        android:background="@color/black"/>
+
+
+</RelativeLayout>

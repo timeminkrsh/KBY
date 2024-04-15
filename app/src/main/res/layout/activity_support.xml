@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.SupportActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_box"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:gravity="start"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:hint="Donation "
+                android:textStyle="bold"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sumbit"
+            android:layout_below="@+id/lin2"
+            android:layout_width="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button"
+            android:layout_gravity="center"
+            android:text="Donate"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donate Section "
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginStart="@dimen/payu_dimen_5dp"
+            android:textColor="@color/colorGrayLight"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If you find this app valuable and would like to support our mission, please consider making a donation. Every contribution, no matter how small, makes a difference."
+            android:textStyle="bold"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KBY is dedicated to provide valuable insights and tools to help individuals to lead more productive life. As an independent project, we rely on the generosity of our users to continue improving and expanding our services..."
+            android:textStyle="bold"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/payu_dimen_5dp"
+            android:layout_marginEnd="@dimen/payu_dimen_5dp"
+            android:text="By making a donation to KBY, you're directly contributing to the development and maintenance of our platform. Your support allows us to: "
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorGrayLight"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.Enhance existing features and introduce new functionalities to better meet the needs of our users\n 2.Invest in research and development to ensure that our insights are more usefull to end users"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        >
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:mbn_circleColor="@color/Green"
+        app:mbn_countBackgroundColor="@color/Green"
+        app:mbn_countTextColor="#FFFFFF"
+        app:mbn_defaultIconColor="@color/table"
+        app:mbn_rippleColor="#3A3535"
+        android:visibility="gone"
+        app:mbn_selectedIconColor="#ffffff" />
+    </FrameLayout>
+
+</LinearLayout>

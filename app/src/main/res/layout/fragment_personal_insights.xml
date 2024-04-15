@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".fragment.PersonalInsightsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/payu_dimen_60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutss"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/payu_dimen_5dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/fromcalantor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint=" FROM :"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:drawableEnd="@drawable/schedule"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@color/white"/>
+
+                <EditText
+                    android:id="@+id/tocalentor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint=" TO :"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:drawableEnd="@drawable/schedule"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/today"
+                android:layout_width="@dimen/payu_dimen_80dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/editdatered"
+                android:layout_marginTop="@dimen/payu_dimen_15dp"
+                android:focusable="false"
+                android:hint="TODAY"
+                android:layout_alignParentEnd="true"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/layoutcalentar"
+                android:layout_below="@+id/layoutss"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_15dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FF0000"/>
+
+
+                <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:daysTextColor="@color/black"
+                    app:textColorSelected="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FF0000"/>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layutss"
+                android:layout_width="@dimen/payu_dimen_150dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginStart="@dimen/payu_dimen_10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="  Select Type"
+                    android:textColor="@color/white"
+                    android:focusable="false"
+                    android:text=" Select Type"
+                    android:layout_marginStart="@dimen/payu_dimen_5dp"
+                    android:background="@drawable/editdatered"
+                    android:drawableEnd="@android:drawable/arrow_down_float"
+                    android:paddingEnd="@dimen/payu_dimen_10dp"
+                    android:textColorHint="@color/white"/>
+
+
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewGraph"
+                android:layout_below="@+id/layutss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/payu_dimen_350dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginRight="20dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp">
+
+                   <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/piechart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                android:layout_below="@+id/cardViewGraph"/>
+
+            <LinearLayout
+                android:id="@+id/layout_category"
+                android:layout_below="@+id/recycle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+                    <View
+                        android:layout_width="@dimen/payu_dimen_15dp"
+                        android:layout_height="@dimen/payu_dimen_15dp"
+                        android:layout_marginTop="@dimen/payu_dimen_5dp"
+                        android:background="@color/red"/>
+
+                    <!--Text view to display R -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sleep"
+                        android:textSize="@dimen/payu_dimen_20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:paddingLeft="10dp"/>
+
+                </LinearLayout>
+
+                <!--Linear layout to display Python-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="@dimen/payu_dimen_5dp"
+                        android:background="@color/Green"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="eat"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/payu_dimen_20dp"
+                        android:paddingLeft="10dp"/>
+
+                </LinearLayout>
+
+                <!--Linear layout to display C++-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="@dimen/payu_dimen_5dp"
+                        android:background="@color/yellow"/>
+
+                    <!--Text view to display C++ text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Music"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingLeft="@dimen/payu_dimen_10dp"
+                        android:textSize="@dimen/payu_dimen_20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <!--View to display the blue color icon-->
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="@dimen/payu_dimen_15dp"
+                        android:layout_marginTop="@dimen/payu_dimen_5dp"
+                        android:background="@color/blue"/>
+
+                    <!--Text view to display Java text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Study"
+                        android:textSize="@dimen/payu_dimen_20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:paddingLeft="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/out_share"
+                android:layout_below="@+id/recycle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="@dimen/payu_dimen_30dp"
+                android:layout_gravity="end"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/shares"/>
+
+            <TextView
+                android:id="@+id/shares"
+                android:layout_width="@dimen/payu_dimen_120dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/recycle"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/editdate"
+                android:drawableEnd="@android:drawable/arrow_down_float"
+                android:focusable="false"
+                android:gravity="center"
+                android:hint="Share With"
+                android:paddingEnd="@dimen/payu_dimen_10dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

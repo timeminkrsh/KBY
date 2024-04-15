@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/payu_dimen_5dp"
+    android:background="@drawable/checkbutton"
+    >
+
+    <View
+        android:id="@+id/viesss"
+        android:layout_width="2dp"
+        android:layout_height="@dimen/payu_dimen_40dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/task"
+        android:layout_width="@dimen/payu_dimen_100dp"
+        android:layout_height="@dimen/payu_dimen_40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="task"
+
+        android:textSize="@dimen/payu_dimen_14sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+
+
+    <ImageView
+        android:id="@+id/remove"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:layout_marginEnd="@dimen/payu_dimen_10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/remove"/>
+
+</LinearLayout>

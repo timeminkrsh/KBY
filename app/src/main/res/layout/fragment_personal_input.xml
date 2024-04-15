@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:id="@+id/relativeLayout"
+    tools:context=".fragment.PersonalInputFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/payu_dimen_60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                android:textSize="@dimen/payu_dimen_16dp" />
+            <Button
+                android:id="@+id/today"
+                android:layout_width="@dimen/payu_dimen_80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                android:background="@drawable/editdate"
+                android:text="Today"
+                android:layout_alignParentEnd="true"
+                android:textSize="@dimen/payu_dimen_14sp"
+                android:textColor="@color/white"/>
+
+            <Spinner
+                android:id="@+id/fromcalantor"
+                style="@style/SpinnerTheme"
+                android:layout_width="@dimen/payu_dimen_120dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/payu_dimen_10dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:spinnerMode="dropdown" />
+
+            <LinearLayout
+                android:id="@+id/layoutcalentar"
+                android:layout_below="@+id/today"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_5dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
+
+                <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:daysTextColor="@color/black"
+                    app:daysTextSize="@dimen/payu_dimen_14sp"
+                    app:weekTextSize="@dimen/payu_dimen_14sp"
+                    android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                    app:textColorSelected="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
+
+            </LinearLayout>
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_margin="5dp">
+
+                <TableRow android:background="@color/table">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:text="Category"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/payu_dimen_10dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Subcategory"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/payu_dimen_10dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:text="Duriation \nHH :MM "
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+
+                </TableRow>
+
+                <!-- Table Data -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_tables"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    tools:listitem="@layout/tablepersonal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_table"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    tools:listitem="@layout/tablepersonal" />
+
+
+            </TableLayout>
+
+            <LinearLayout
+                android:id="@+id/addbutton"
+                android:layout_width="@dimen/payu_dimen_110dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_marginStart="@dimen/payu_dimen_5dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                android:gravity="center"
+                android:layout_below="@+id/tableLayout"
+                android:background="@drawable/buttonadd"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:orientation="horizontal"
+                tools:ignore="NotSibling">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Row"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:padding="7dp"
+                    android:src="@drawable/plus"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/save"
+                android:layout_width="@dimen/payu_dimen_120dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_below="@+id/tableLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="9dp"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:background="@drawable/buttonadds"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="NotSibling">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</FrameLayout>

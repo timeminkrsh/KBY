@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Activity.PersonalExistingActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/payu_dimen_10dp"
+            android:layout_marginBottom="@dimen/payu_dimen_50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lian_ed"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/exist_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@color/table"
+                    android:text="Existing Groups"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/new_group"
+                    android:layout_width="match_parent"
+                    android:textAllCaps="false"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:background="@drawable/border_box"
+                    android:text="New Group"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                android:layout_marginTop="@dimen/payu_dimen_30dp"
+                android:layout_marginBottom="@dimen/payu_dimen_30dp"
+                android:background="@color/purple_200" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_personal_exist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/checkadd"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

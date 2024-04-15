@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".fragment.ChecklistInputFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layoutss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txttaskname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/payu_dimen_16dp"
+            android:layout_marginTop="@dimen/payu_dimen_10dp"
+            android:text="Task Name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/payu_dimen_18sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/tasknames"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/taskname"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_box"
+            android:hint="Enter Your Task"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/addtask_btn"
+            android:layout_width="@dimen/payu_dimen_110dp"
+            android:layout_height="@dimen/payu_dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/payu_dimen_10dp"
+            android:background="@drawable/button"
+            android:text="Add Task "
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/payu_dimen_20dp"
+            android:textStyle="bold" />
+
+        <!-- <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">-->
+
+        <RelativeLayout
+            android:id="@+id/payout_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/payu_dimen_10dp"
+            android:layout_marginTop="@dimen/payu_dimen_20dp"
+            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+            android:layout_marginBottom="@dimen/payu_dimen_60dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/fromcalantor"
+                android:layout_width="@dimen/payu_dimen_150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/payu_dimen_5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_spinner"
+                android:drawableEnd="@android:drawable/arrow_down_float"
+                android:focusable="false"
+                android:gravity="center"
+                android:paddingEnd="@dimen/payu_dimen_15dp"
+                android:text="Oct "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fromcalantor"
+                android:text="Task List "
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt"
+                android:layout_marginTop="@dimen/payu_dimen_5dp">
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/payu_dimen_5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <View
+                            android:id="@+id/viesss"
+                            android:layout_width="2dp"
+                            android:layout_height="@dimen/payu_dimen_60dp"
+                            android:background="@color/black" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycltask"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            tools:listitem="@layout/spiner" />
+
+                        <View
+                            android:id="@+id/viessss"
+                            android:layout_width="2dp"
+                            android:layout_height="@dimen/payu_dimen_60dp"
+                            android:background="@color/black" />
+
+
+                    </RelativeLayout>
+
+                </HorizontalScrollView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/horizontalview"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    tools:listitem="@layout/datelist" />
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payu_dimen_200dp"
+                    android:layout_below="@+id/horizontalview"
+                    android:layout_marginTop="@dimen/payu_dimen_10dp"
+                    android:src="@drawable/planning"
+                    android:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/calendarViewnewlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/horizontalview"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    tools:listitem="@layout/datelist" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <!--   </ScrollView>-->
+
+    </LinearLayout>
+
+
+</LinearLayout>

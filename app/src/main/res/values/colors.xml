@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#8BC34A</color>
+    //#4267b2
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="blue">#0B4CA3</color>
+    <color name="ble">#81B5FA</color>
+    <color name="darkgray">#9f000000</color>
+    <color name="gray">#72000000</color>
+
+    <color name="grayy">#0F000000</color>
+    <color name="lightgray">#32000000</color>
+    <color name="lgt_light">#ECE8E8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#CCFFFFFF</color>
+    <color name="whie">#5a009e </color>
+    <color name="yellow">#FFD976 </color>
+
+    <color name="Green">#8BC34A</color>
+    <color name="violet">#F6BFFF</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorWhiteDull">#cfcfcf</color>
+    <color name="black">#000000</color>
+    <color name="colorHint">#72000000</color>
+    <color name="colorWhiteTrans">#10ffffff</color>
+    <color name="colorBlackTrans">#10000000</color>
+    <color name="BlackTrans">#6B000000</color>
+    <color name="colortext">#AD000000</color>
+    <color name="colorGreen">#0F834C</color>
+    <color name="table">#977BB2</color>
+    <color name="colorGrayLight">#0EF81A</color>
+    <color name="gold">#E7C359</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="colorError">#ff0000</color>
+    <color name="colorAccentt">#234169E1</color>
+    <color name="graaay">#39ECE8E8</color>
+
+</resources>
+
