@@ -111,7 +111,7 @@ public class EducationActivity extends AppCompatActivity {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(
                     "android:switcher:" + R.id.viewpager + ":1");
             if (fragment instanceof EducationInsightsFragment) {
-                ((EducationInsightsFragment) fragment).educationinsight(todayDateStr);
+               // ((EducationInsightsFragment) fragment).educationinsight(todayDateStr);
             }
         }
     }

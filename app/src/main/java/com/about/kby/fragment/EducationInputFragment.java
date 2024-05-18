@@ -611,7 +611,7 @@ public class EducationInputFragment extends Fragment {
             if (mParam3.equalsIgnoreCase("1")) {
                 holder.remove.setVisibility(View.VISIBLE);
             } else {
-                holder.remove.setVisibility(View.GONE);
+                holder.remove.setVisibility(View.INVISIBLE);
             }
 
             holder.remove.setOnClickListener(new View.OnClickListener() {
@@ -665,7 +665,7 @@ public class EducationInputFragment extends Fragment {
                     Log.e("Response", response.toString());
                     try {
                         JSONObject jsonResponse = new JSONObject(response);
-                        if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
+                        if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
                             Toast.makeText(mContext, "Removed", Toast.LENGTH_SHORT).show();
                             EducationInputFragment.getInstances().getSubject(todayDateStr);
                         } else {

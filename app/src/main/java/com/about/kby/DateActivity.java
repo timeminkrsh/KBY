@@ -68,7 +68,7 @@ public class DateActivity extends AppCompatActivity {
         et_phone.setText(Bsession.getInstance().getUser_mobile(getApplicationContext()));
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.infos));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.donate));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.group));
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.terms));
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
@@ -79,7 +79,7 @@ public class DateActivity extends AppCompatActivity {
                 if (item.getId() == 4) {
                     //intent = new Intent(HomeActivity.this, DateActivity.class);
                 } else if (item.getId() == 3) {
-                    intent = new Intent(DateActivity.this, SupportActivity.class);
+                    intent = new Intent(DateActivity.this, Group2Activity.class);
                 } else if (item.getId() == 2) {
                     intent = new Intent(DateActivity.this, AboutusActivity.class);
                 } else if (item.getId() == 1) {

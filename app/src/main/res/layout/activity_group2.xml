@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Group2Activity">
+
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/table"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                app:cardCornerRadius="@dimen/payu_dimen_5dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_opencircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Open Circle"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/payu_dimen_10dp"
+                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_30dp"
+                            android:layout_height="@dimen/payu_dimen_30dp"
+                            android:src="@drawable/info"
+                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='"Share \n with \n Everyone globally "'
+                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                            android:layout_marginStart="@dimen/payu_dimen_30dp"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_50dp"
+                            android:layout_height="@dimen/payu_dimen_50dp"
+                            android:src="@drawable/click"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(public)"
+                        android:layout_marginStart="@dimen/payu_dimen_40dp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_30dp"
+                            android:layout_height="@dimen/payu_dimen_30dp"
+                            android:src="@drawable/info"
+                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sharing your daily routine can inspire &amp; motivate other, let's make each day more productive
+and fulfilling together"
+                            android:layout_marginTop="@dimen/payu_dimen_10dp"
+                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/ic_launcher_background"
+                android:layout_margin="@dimen/payu_dimen_10dp"
+                app:cardCornerRadius="@dimen/payu_dimen_5dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_personal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Personal"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/payu_dimen_10dp"
+                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_30dp"
+                            android:layout_height="@dimen/payu_dimen_30dp"
+                            android:src="@drawable/info"
+                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='"Share \n with \n known people"'
+                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                            android:layout_marginStart="@dimen/payu_dimen_30dp"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_50dp"
+                            android:layout_height="@dimen/payu_dimen_50dp"
+                            android:src="@drawable/click"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(Private)"
+                        android:layout_marginStart="@dimen/payu_dimen_40dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/payu_dimen_18sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/payu_dimen_30dp"
+                            android:layout_height="@dimen/payu_dimen_30dp"
+                            android:src="@drawable/info"
+                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="It is fun showing it to your friends and family about your doings"
+                            android:layout_marginTop="@dimen/payu_dimen_10dp"
+                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:mbn_circleColor="@color/Green"
+        app:mbn_countBackgroundColor="@color/Green"
+        app:mbn_countTextColor="#FFFFFF"
+        app:mbn_defaultIconColor="@color/table"
+        app:mbn_rippleColor="#3A3535"
+        app:mbn_selectedIconColor="#ffffff" />
+
+
+</RelativeLayout>

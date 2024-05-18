@@ -82,7 +82,7 @@ public class OTPActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 JSONObject jsonResponse = new JSONObject(response);
 
-                                if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                                if (jsonResponse.has("userstatus") && jsonResponse.getString("userstatus").equals("0")) {
                                     ProductConfig.userModel = new UserModel(jsonResponse);
                                     Bsession.getInstance().initialize(OTPActivity.this,
                                             jsonResponse.getString("user_id"), "",
@@ -90,7 +90,20 @@ public class OTPActivity extends AppCompatActivity {
                                             "", "");
                                     phone = jsonResponse.getString("user");
                                     message = jsonResponse.getString("message");
-                                    Toast.makeText(OTPActivity.this, "OTP Entered Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(OTPActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(OTPActivity.this, HomeActivity.class);
+                                    i.putExtra("user_mobile", phone);
+                                    startActivity(i);
+                                    finish();
+                                } else if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")){
+                                    Bsession.getInstance().initialize(OTPActivity.this,
+                                            jsonResponse.getString("user_id"),
+                                            jsonResponse.getString("user_name"),
+                                            jsonResponse.getString("user"),
+                                            "", "");
+                                    phone = jsonResponse.getString("user");
+                                    message = jsonResponse.getString("message");
+                                    Toast.makeText(OTPActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(OTPActivity.this, HomeActivity.class);
                                     i.putExtra("user_mobile", phone);
                                     startActivity(i);

@@ -591,12 +591,12 @@ public class PersonalInsightsFragment extends Fragment {
                         for (int j = 0; j < jsonlist.length(); j++) {
                             JSONObject jsonObject1 = jsonlist.getJSONObject(j);
 
-                            String checkAlreayAdded = isTimeAlreadyAdded(PojoLists, jsonObject1.getString("sub_category"));
-                            int position = alreadyAddedPositionOfValue(PojoLists, jsonObject1.getString("sub_category"));
+                           // String checkAlreayAdded = isTimeAlreadyAdded(PojoLists, jsonObject1.getString("sub_category"));
+                           // int position = alreadyAddedPositionOfValue(PojoLists, jsonObject1.getString("sub_category"));
 
                             PersonalPojo personalPojo = new PersonalPojo();
                             String[] timeParts;
-                            if (checkAlreayAdded.isEmpty()) {
+                           // if (checkAlreayAdded.isEmpty()) {
                                 personalPojo.setId(jsonObject1.getString("id"));
                                 personalPojo.setCategory(jsonObject1.getString("category"));
                                 personalPojo.setSubategory(jsonObject1.getString("sub_category"));
@@ -604,27 +604,19 @@ public class PersonalInsightsFragment extends Fragment {
                                 String timeString = personalPojo.getDuriation(); // Assuming timeString is in the format HH:mm
                                 timeParts = timeString.split(":"); // Splitting hours and minutes
                                 PojoLists.add(personalPojo);
-                            } else {
-                                LocalTime time1 = null;
-                                LocalTime time2 = null;
-                                LocalTime sum = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    time1 = LocalTime.parse(jsonObject1.getString("time"));
-                                    time2 = LocalTime.parse(checkAlreayAdded);
+                        //    } else {
+                              //  LocalTime time1 = null;
+                              //  LocalTime time2 = null;
+                               // LocalTime sum = null;
+                            //    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                             //       time1 = LocalTime.parse(jsonObject1.getString("time"));
+                              //      time2 = LocalTime.parse(checkAlreayAdded);
                                     // Calculate the difference in minutes
-                                    sum = time1.plusHours(time2.getHour()).plusMinutes(time2.getMinute());
-                                }
+                                 //   sum = time1.plusHours(time2.getHour()).plusMinutes(time2.getMinute());
+                              //  }
 
-                                personalPojo.setId(jsonObject1.getString("id"));
-                                personalPojo.setCategory(jsonObject1.getString("category"));
-                                personalPojo.setSubategory(jsonObject1.getString("sub_category"));
-                                personalPojo.setDuriation(String.valueOf(sum));
+
 /// overall time change
-                                String timeString = (jsonObject1.getString("time"));// Assuming timeString is in the format HH:mm
-                                timeParts = timeString.split(":"); // Splitting hours and minutes
-                                PojoLists.remove(position);
-                                PojoLists.add(position, personalPojo);
-                            }
 
                             idList.add(personalPojo.getId());
                             idListc.add(personalPojo.getCategory());
@@ -702,7 +694,7 @@ public class PersonalInsightsFragment extends Fragment {
         getContext();
     }
 
-    public String isTimeAlreadyAdded(List<PersonalPojo> list, String valueToCheck) {
+/*    public String isTimeAlreadyAdded(List<PersonalPojo> list, String valueToCheck) {
         String duration = "";
         for (PersonalPojo item : list) {
             if (item.getSubategory().equals(valueToCheck)) {
@@ -740,7 +732,7 @@ public class PersonalInsightsFragment extends Fragment {
             }
         }
         return -1; // Return -1 if value is not found in the list
-    }
+    }*/
 
     public void personal_user_inut_fetch(final boolean isCategory) {
         final Map<String, String> params = new HashMap<>();
@@ -769,11 +761,12 @@ public class PersonalInsightsFragment extends Fragment {
                         for (int j = 0; j < jsonlist.length(); j++) {
                             JSONObject jsonObject1 = jsonlist.getJSONObject(j);
                             PersonalPojo personalPojo = new PersonalPojo();
-                            String checkAlreayAdded = isTimeAlreadyAdded(PojoLists, jsonObject1.getString("sub_category"));
+                            /*String checkAlreayAdded = isTimeAlreadyAdded(PojoLists, jsonObject1.getString("sub_category"));
                             int position = alreadyAddedPositionOfValue(PojoLists, jsonObject1.getString("sub_category"));
                             String[] timeParts;
 
-                            if (checkAlreayAdded.isEmpty()) {
+                            if (checkAlreayAdded.isEmpty()) {*/
+                            String[] timeParts;
                                 personalPojo.setId(jsonObject1.getString("id"));
                                 personalPojo.setCategory(jsonObject1.getString("category"));
                                 personalPojo.setSubategory(jsonObject1.getString("sub_category"));
@@ -781,7 +774,7 @@ public class PersonalInsightsFragment extends Fragment {
                                 String timeString = personalPojo.getDuriation(); // Assuming timeString is in the format HH:mm
                                 timeParts = timeString.split(":"); // Splitting hours and minutes
                                 PojoLists.add(personalPojo);
-                            } else {
+                           /* } else {
                                 LocalTime time1 = null;
                                 LocalTime time2 = null;
                                 LocalTime sum = null;
@@ -800,7 +793,7 @@ public class PersonalInsightsFragment extends Fragment {
                                 timeParts = timeString.split(":"); // Splitting hours and minutes
                                 PojoLists.remove(position);
                                 PojoLists.add(position, personalPojo);
-                            }
+                            }*/
                             idList.add(personalPojo.getId());
                             idListc.add(personalPojo.getCategory());
                             idListsub.add(personalPojo.getSubategory());
@@ -932,38 +925,30 @@ public class PersonalInsightsFragment extends Fragment {
                             JSONObject jsonObject1 = jsonlist.getJSONObject(j);
                             InputInsightModel inputInsightModel = new InputInsightModel();
 
-                            String checkAlreayAdded = isTimeAlreadyAddedToDate(PojoList, jsonObject1.getString("sub_category"));
-                            int position = alreadyAddedPositionOfValueToDate(PojoList, jsonObject1.getString("sub_category"));
+                          //  String checkAlreayAdded = isTimeAlreadyAddedToDate(PojoList, jsonObject1.getString("sub_category"));
+                          //  int position = alreadyAddedPositionOfValueToDate(PojoList, jsonObject1.getString("sub_category"));
                             String[] timeParts;
 
-                            if (checkAlreayAdded.isEmpty()) {
+                         //   if (checkAlreayAdded.isEmpty()) {
                                 inputInsightModel.setId(jsonObject1.getString("id"));
                                 inputInsightModel.setCategory(jsonObject1.getString("category"));
                                 inputInsightModel.setSubategory(jsonObject1.getString("sub_category"));
                                 inputInsightModel.setDuriation(jsonObject1.getString("time"));
-                                String timeString = inputInsightModel.getDuriation(); // Assuming timeString is in the format HH:mm
-                                timeParts = timeString.split(":"); // Splitting hours and minutes
                                 PojoList.add(inputInsightModel);
-                            } else {
-                                LocalTime time1 = null;
-                                LocalTime time2 = null;
-                                LocalTime sum = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    time1 = LocalTime.parse(jsonObject1.getString("time"));
+                          //  } else {
+                          //      LocalTime time1 = null;
+                           //     LocalTime time2 = null;
+                           //     LocalTime sum = null;
+                            //    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                             /*       time1 = LocalTime.parse(jsonObject1.getString("time"));
                                     time2 = LocalTime.parse(checkAlreayAdded);
                                     // Calculate the plus in minutes
                                     sum = time1.plusHours(time2.getHour()).plusMinutes(time2.getMinute());
-                                }
-                                inputInsightModel.setId(jsonObject1.getString("id"));
-                                inputInsightModel.setCategory(jsonObject1.getString("category"));
-                                inputInsightModel.setSubategory(jsonObject1.getString("sub_category"));
-                                inputInsightModel.setDuriation(String.valueOf(sum));
+                                }*/
+
 /// overall time change
                                 String timeString = (jsonObject1.getString("time"));// Assuming timeString is in the format HH:mm
                                 timeParts = timeString.split(":"); // Splitting hours and minutes
-                                PojoList.remove(position);
-                                PojoList.add(position, inputInsightModel);
-                            }
                             idList.add(inputInsightModel.getId());
                             idListc.add(inputInsightModel.getCategory());
                             idListsub.add(inputInsightModel.getSubategory());

@@ -155,64 +155,6 @@
                     android:layout_margin="10dp"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="0dp"
-                    android:backgroundTint="#9977D6"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:id="@+id/education"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/payu_dimen_10dp"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/education_side"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Education"
-                                android:textColor="@color/black"
-                                android:textSize="14sp"
-                                android:gravity="center"
-                                android:textStyle="bold"
-                                android:layout_marginStart="5dp"
-                                android:layout_gravity="center"/>
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/payu_dimen_20dp"
-                            android:src="@drawable/education"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/payu_dimen_200dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
                     android:backgroundTint="#F88EB2"
                     android:layout_weight="1">
 
@@ -258,13 +200,71 @@
 
                 </androidx.cardview.widget.CardView>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/payu_dimen_200dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp"
+                    android:backgroundTint="#D5C7F4"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:id="@+id/education"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/payu_dimen_10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/education_side"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="To Do List"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:layout_marginStart="5dp"
+                                android:layout_gravity="center"/>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/payu_dimen_20dp"
+                            android:src="@drawable/todo"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/payu_dimen_200dp"
                     android:layout_margin="10dp"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="@dimen/payu_dimen_15dp"
-                    android:backgroundTint="#94EC6E"
+                    android:backgroundTint="#8FF8DA"
                     android:layout_weight="1">
 
                     <LinearLayout
@@ -288,7 +288,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Groups"
+                                android:text="Notes"
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:gravity="center"
@@ -302,7 +302,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/payu_dimen_20dp"
-                            android:src="@drawable/message"/>
+                            android:src="@drawable/notes"/>
 
                     </LinearLayout>
 
@@ -311,7 +311,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
     </ScrollView>
 
@@ -331,7 +330,5 @@
         android:layout_alignParentBottom="true"
         app:mbn_rippleColor="#3A3535"
         app:mbn_selectedIconColor="#ffffff" />
-
-
 
 </RelativeLayout>

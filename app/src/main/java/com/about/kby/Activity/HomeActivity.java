@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.about.kby.Bsession;
 import com.about.kby.DateActivity;
+import com.about.kby.Group2Activity;
 import com.about.kby.ProductConfig;
 import com.about.kby.R;
 
@@ -142,7 +143,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
          bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
          bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.infos));
-         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.donate));
+         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.group));
          bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.terms));
          bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
              @Override
@@ -152,9 +153,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                  if (item.getId() == 4) {
                      intent = new Intent(HomeActivity.this, DateActivity.class);
-                 } else if (item.getId() == 3) {
-                     intent = new Intent(HomeActivity.this, SupportActivity.class);
-                 } else if (item.getId() == 2) {
+                 }else if (item.getId() == 3) {
+                     intent = new Intent(HomeActivity.this, Group2Activity.class);
+                 }else if (item.getId() == 2) {
                      intent = new Intent(HomeActivity.this, AboutusActivity.class);
                  } else if (item.getId() == 1) {
                     // intent = new Intent(HomeActivity.this, HomeActivity.class);
@@ -323,6 +324,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen((int) GravityCompat.START)) {
             drawer.closeDrawer((int) GravityCompat.START);
@@ -345,7 +347,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         });
         BackAlertDialog.show();
-
+        super.onBackPressed();
 
     }
     private void logout() {

@@ -21,6 +21,7 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -74,7 +75,7 @@ public class ChecklistInsightsFragment extends Fragment {
     ArrayList<ChecklistModel> namelist = new ArrayList<>();
 
     TextView shares;
-    AutoCompleteTextView selecttask;
+    Spinner selecttask;
     Spinner selectmonth;
     String selectedMonth;
     TextView countone, countzero;
@@ -262,23 +263,26 @@ public class ChecklistInsightsFragment extends Fragment {
                 });
             }
         });
-        selecttask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 name_list();
 
-                selecttask.showDropDown();
-            }
-        });
-        selecttask.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        selecttask.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("ResourceType")
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
-                // Do something with the selected item
-                selecttask.setText(selectedItem);
-                counts(selecttask.getText().toString());
+                // Now you have the name of the selected item, you can use it as needed
+                selecttask.setTag(selectedItem);
+                counts(selectedItem);
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
         });
+
 
         final String[] months = new DateFormatSymbols().getMonths(); // Get array of all month names
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,months);
@@ -342,7 +346,7 @@ public class ChecklistInsightsFragment extends Fragment {
         final Map<String, String> params = new HashMap<>();
         String para_str2 = "&group_id=" + groupId;
         String para_str3 = "&active=" + countone.getText().toString();
-        String para_str4 = "&task=" + selecttask.getText().toString();
+        String para_str4 = "&task=" + selecttask.getTag().toString();
         String para_str5 = "&inactive=" + countzero.getText().toString();
         String para_str6 = "&description=" + description;
         String baseUrl = ProductConfig.checklist_groups + "?user_id=" + Bsession.getInstance().getUser_id(getContext()) + para_str2 + para_str3 + para_str4 + para_str5 + para_str6;
@@ -384,7 +388,7 @@ public class ChecklistInsightsFragment extends Fragment {
 
         String para_str1 = "?inactive=" + countzero.getText().toString();
         String para_str2 = "&name=" + Bsession.getInstance().getUser_name(getContext());
-        String para_str3 = "&task=" + selecttask.getText().toString();
+        String para_str3 = "&task=" + selecttask.getTag().toString();
         String para_str4 = "&active=" + countone.getText().toString();
         String para_str5 = "&description=" + string;
         String baseUrl = ProductConfig.checklist_open + para_str1 + para_str2 + para_str3 + para_str4 + para_str5;
@@ -397,7 +401,7 @@ public class ChecklistInsightsFragment extends Fragment {
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
 
-                        // Toast.makeText(getContext(), "Update On Open Circle", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getContext(), "Update On Open Circle", Toast.LENGTH_SHORT).show();
 
                     } else {
                         // Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
@@ -425,11 +429,16 @@ public class ChecklistInsightsFragment extends Fragment {
         requestQueue.add(jsObjRequest);
     }
 
-    private void name_list() {
+    public void name_list() {
         final Map<String, String> params = new HashMap<>();
         String para_str = "?task_id=" + taskId;
         String baseUrl = ProductConfig.tasklist + para_str;
         namelist = new ArrayList<>();
+        ArrayList<ChecklistModel> namelist = new ArrayList<>();
+        ChecklistModel defaultModel = new ChecklistModel();
+        defaultModel.setId("-1"); // Assign an ID for the default selection if needed
+        defaultModel.setName("Select Task");
+        namelist.add(defaultModel);
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -441,45 +450,39 @@ public class ChecklistInsightsFragment extends Fragment {
                         for (int j = 0; j < jsonlist.length(); j++) {
                             JSONObject jsonObject = jsonlist.getJSONObject(j);
                             ChecklistModel model = new ChecklistModel();
-
                             model.setId(jsonObject.getString("id"));
                             model.setName(jsonObject.getString("tack_name"));
                             namelist.add(model);
-
-                            List<String> names = new ArrayList<>();
-                            for (ChecklistModel models : namelist) {
-                                names.add(models.getName());
-                            }
-                            String[] items = names.toArray(new String[0]);
-
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
-
-                            selecttask.setAdapter(adapter);
-
                         }
 
-
+                        // Populate the Spinner with task names after retrieving all the names
+                        List<String> names = new ArrayList<>();
+                        for (ChecklistModel models : namelist) {
+                            names.add(models.getName());
+                        }
+                        String[] items = names.toArray(new String[0]);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
+                        selecttask.setAdapter(adapter);
                     } else {
-                        //  Toast.makeText(getContext(), "Existing group not found", Toast.LENGTH_SHORT).show();
+                        defaultModel.setName("Select Task");
+                        // Handle case where result is not Success
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", error.toString());
-
-                    }
-                }) {
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error", error.toString());
+            }
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 return params;
             }
         };
+
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsObjRequest);
     }

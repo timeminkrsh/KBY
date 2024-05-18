@@ -225,6 +225,7 @@ public class PersonalInputFragment extends Fragment implements AdapterView.OnIte
 
         Log.i("Default Date", DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());
         selectedDateStr = DateFormat.format("yyyy-MM-dd", defaultSelectedDate).toString();
+        txt_date.setText(DateFormat.format("d-MMM-yyyy", defaultSelectedDate).toString());
 
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override

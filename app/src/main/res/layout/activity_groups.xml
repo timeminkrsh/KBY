@@ -9,215 +9,401 @@
     tools:context=".Activity.GroupsActivity">
 
     <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/payu_dimen_10dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/table"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            app:cardCornerRadius="@dimen/payu_dimen_5dp">
+
+            <LinearLayout
+                android:id="@+id/ll_opencircle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open Circle"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/payu_dimen_10dp"
+                        android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                        android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                        android:layout_marginStart="@dimen/payu_dimen_20dp"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_30dp"
+                        android:layout_height="@dimen/payu_dimen_30dp"
+                        android:src="@drawable/info"
+                        android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='"Share \n with \n Everyone globally "'
+                        android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                        android:layout_marginStart="@dimen/payu_dimen_30dp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_50dp"
+                        android:layout_height="@dimen/payu_dimen_50dp"
+                        android:src="@drawable/click"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(public)"
+                    android:layout_marginStart="@dimen/payu_dimen_40dp"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_30dp"
+                        android:layout_height="@dimen/payu_dimen_30dp"
+                        android:src="@drawable/info"
+                        android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sharing your daily routine can inspire &amp; motivate other, let's make each day more productive
+and fulfilling together"
+                        android:layout_marginTop="@dimen/payu_dimen_10dp"
+                        android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                        android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                        android:layout_marginStart="@dimen/payu_dimen_20dp"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/ic_launcher_background"
+            android:layout_margin="@dimen/payu_dimen_10dp"
+            app:cardCornerRadius="@dimen/payu_dimen_5dp">
+
+            <LinearLayout
+                android:id="@+id/ll_personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/payu_dimen_10dp"
+                        android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                        android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                        android:layout_marginStart="@dimen/payu_dimen_20dp"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_30dp"
+                        android:layout_height="@dimen/payu_dimen_30dp"
+                        android:src="@drawable/info"
+                        android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='"Share \n with \n known people"'
+                        android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                        android:layout_marginStart="@dimen/payu_dimen_30dp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_50dp"
+                        android:layout_height="@dimen/payu_dimen_50dp"
+                        android:src="@drawable/click"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(Private)"
+                    android:layout_marginStart="@dimen/payu_dimen_40dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/payu_dimen_18sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/payu_dimen_30dp"
+                        android:layout_height="@dimen/payu_dimen_30dp"
+                        android:src="@drawable/info"
+                        android:layout_margin="@dimen/payu_dimen_10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="It is fun showing it to your friends and family about your doings"
+                        android:layout_marginTop="@dimen/payu_dimen_10dp"
+                        android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                        android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                        android:layout_marginStart="@dimen/payu_dimen_20dp"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/payu_dimen_10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/table"
-                android:layout_margin="@dimen/payu_dimen_10dp"
-                app:cardCornerRadius="@dimen/payu_dimen_5dp">
+                android:layout_marginStart="@dimen/payu_dimen_10dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/payu_dimen_16dp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/today"
+                android:layout_width="@dimen/payu_dimen_80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                android:background="@drawable/editdate"
+                android:text="Today"
+                android:layout_alignParentEnd="true"
+                android:textSize="@dimen/payu_dimen_14sp"
+                android:textColor="@color/white"/>
 
-                <LinearLayout
-                    android:id="@+id/ll_opencircle"
+            <LinearLayout
+                android:id="@+id/layoutcalentar"
+                android:layout_below="@+id/today"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_5dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
+
+                <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                    android:id="@+id/calendarView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    app:daysTextColor="@color/black"
+                    app:daysTextSize="@dimen/payu_dimen_14sp"
+                    app:weekTextSize="@dimen/payu_dimen_14sp"
+                    android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                    app:textColorSelected="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+            </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Open Circle"
-                            android:textStyle="bold"
-                            android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
-                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"/>
-
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_30dp"
-                            android:layout_height="@dimen/payu_dimen_30dp"
-                            android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
-
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='"Share \n with \n Everyone globally "'
-                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
-                            android:layout_marginStart="@dimen/payu_dimen_30dp"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"/>
-
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_50dp"
-                            android:layout_height="@dimen/payu_dimen_50dp"
-                            android:src="@drawable/click"
-                            android:layout_centerInParent="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(public)"
-                        android:layout_marginStart="@dimen/payu_dimen_40dp"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_30dp"
-                            android:layout_height="@dimen/payu_dimen_30dp"
-                            android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sharing your daily routine can inspire &amp; motivate other, let's make each day more productive
-and fulfilling together"
-                            android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
-                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/ic_launcher_background"
-                android:layout_margin="@dimen/payu_dimen_10dp"
-                app:cardCornerRadius="@dimen/payu_dimen_5dp">
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/ll_personal"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="  Enter your Notes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/payu_dimen_20dp"
+                    android:textStyle="bold" />
+<LinearLayout
+    android:id="@+id/linearlayour"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/payu_dimen_200dp"
+    android:background="@drawable/border_box"
+    android:orientation="vertical"
+    >
+    <EditText
+        android:id="@+id/txt_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/payu_dimen_5dp"
+        android:layout_marginStart="@dimen/payu_dimen_5dp"
+        android:paddingStart="@dimen/payu_dimen_5dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/payu_dimen_16dp"
+        android:textStyle="bold"
+        android:gravity="start|top" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addbutton"
+        android:id="@+id/recycleview"
+        tools:listitem="@layout/educationadd"/>
+</LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Personal"
-                            android:textStyle="bold"
-                            android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
-                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"/>
 
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_30dp"
-                            android:layout_height="@dimen/payu_dimen_30dp"
-                            android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+            </LinearLayout>
 
-                    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/addbutton"
+                android:layout_width="@dimen/payu_dimen_110dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_below="@+id/tableLayout"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="@dimen/payu_dimen_10dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='"Share \n with \n known people"'
-                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
-                            android:layout_marginStart="@dimen/payu_dimen_30dp"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"/>
 
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_50dp"
-                            android:layout_height="@dimen/payu_dimen_50dp"
-                            android:src="@drawable/click"
-                            android:layout_centerInParent="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="@dimen/payu_dimen_20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/editbutton"
+                android:layout_width="@dimen/payu_dimen_110dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_below="@+id/tableLayout"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:background="@drawable/button"
+                android:orientation="horizontal">
 
-                    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(Private)"
-                        android:layout_marginStart="@dimen/payu_dimen_40dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/payu_dimen_18sp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+            </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="@dimen/payu_dimen_30dp"
-                            android:layout_height="@dimen/payu_dimen_30dp"
-                            android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+            <LinearLayout
+                android:id="@+id/save"
+                android:layout_width="@dimen/payu_dimen_120dp"
+                android:layout_height="@dimen/payu_dimen_40dp"
+                android:layout_below="@+id/tableLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="9dp"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                android:background="@drawable/buttonadds"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="NotSibling">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="It is fun showing it to your friends and family about your doings"
-                            android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
-                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </ScrollView>
 

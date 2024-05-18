@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                            "",
                             "");
                     phone = jsonResponse.getString("user");
-                    Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, " successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
                     intent.putExtra("user_mobile", LoginActivity.this.moble);
                     Toast.makeText(LoginActivity.this, jsonResponse.getString("message"), Toast.LENGTH_SHORT).show();

@@ -135,7 +135,7 @@ public class ExistingGroupAdapter extends RecyclerView.Adapter<ExistingGroupAdap
                                 if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
                                     Toast.makeText(context, "Group name updated successfully", Toast.LENGTH_LONG).show();
                                     popupWindow.dismiss();
-                                    ((EducationExistingActivity) ExistingGroupAdapter.this.context).packagelist();
+                                  //  ((EducationExistingActivity) ExistingGroupAdapter.this.context).packagelist();
 
 
                                 } else {

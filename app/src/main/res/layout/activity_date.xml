@@ -88,6 +88,16 @@
                 android:textStyle="bold"
 
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note: Updating your name is mandatory which allow others to identify you."
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/payu_dimen_18sp"
+                android:gravity="center"
+                android:layout_below="@+id/sumbit"/>
+
             <com.etebarian.meowbottomnavigation.MeowBottomNavigation
                 android:id="@+id/bottomNavigation"
                 android:layout_width="match_parent"

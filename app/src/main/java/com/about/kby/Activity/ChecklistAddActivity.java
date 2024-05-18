@@ -153,7 +153,11 @@ public class ChecklistAddActivity extends AppCompatActivity {
                 try {
                     progressDialog.dismiss();
                     JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.has("result") && jsonResponse.getString("result").equals("failed")) {
+                        rv_checklist.setVisibility(View.GONE);
+                    }
                     if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
+                        rv_checklist.setVisibility(View.VISIBLE);
                         JSONArray jsonlist = jsonResponse.getJSONArray("task_list");
                         for (int j = 0; j < jsonlist.length(); j++) {
                             JSONObject jsonObject = jsonlist.getJSONObject(j);
@@ -168,7 +172,8 @@ public class ChecklistAddActivity extends AppCompatActivity {
                         rv_checklist.setAdapter(packageListAdapter);
                         rv_checklist.setHasFixedSize(true);
 
-                    } else {
+                    }
+                    else {
                         Toast.makeText(ChecklistAddActivity.this, "Checklist group not found", Toast.LENGTH_SHORT).show();
                     }
 

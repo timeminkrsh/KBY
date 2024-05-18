@@ -1,5 +1,7 @@
 package com.about.kby.Activity;
 
+import static com.about.kby.fragment.PersonalInputFragment.selectedDateStr;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,6 +19,7 @@ import com.about.kby.DateActivity;
 import com.about.kby.fragment.ChecklistInputFragment;
 import com.about.kby.fragment.ChecklistInsightsFragment;
 import com.about.kby.R;
+import com.about.kby.fragment.PersonalInsightsFragment;
 
 public class ChecklistActivity extends AppCompatActivity {
     ViewPager viewpager;
@@ -56,7 +59,7 @@ public class ChecklistActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 viewpager.setCurrentItem(1);
-
+                refreshInsightsFragment();
             }
         });
         backimage.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +69,31 @@ public class ChecklistActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 1) { // Assuming PersonalInsightsFragment is at position 1
+                    Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                            "android:switcher:" + R.id.viewpager + ":1");
+                    if (fragment instanceof ChecklistInsightsFragment) {
+                        ((ChecklistInsightsFragment) fragment).name_list();
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+
+            // Other required methods (onPageScrolled, onPageScrollStateChanged)
+        });
+
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +101,19 @@ public class ChecklistActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+    private void refreshInsightsFragment() {
+        int currentItem = viewpager.getCurrentItem();
+        if (currentItem == 1) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(
+                    "android:switcher:" + R.id.viewpager + ":1");
+            if (fragment instanceof ChecklistInsightsFragment) {
+               ((ChecklistInsightsFragment) fragment).name_list();
+            }
+        }
+    }
+
     public class Fragmentadapter extends FragmentPagerAdapter {
         private String task_id,tack_name;
 

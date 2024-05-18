@@ -31,7 +31,6 @@ public class SupportActivity extends AppCompatActivity {
         });
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.infos));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.donate));
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.terms));
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override

@@ -3,7 +3,7 @@ package com.about.kby;
 import com.about.kby.model.UserModel;
 
 public class ProductConfig {
-    public static String baseUrl = "https://minswaysolutions.com/webteam/kby/api/";
+    public static String baseUrl = "https://kby.co.in/api/";
     public static String userlogin = (baseUrl + "userlogin.php");
     public static UserModel userModel = new UserModel();
     public static String userotpverify = (baseUrl + "userotpverify.php");
@@ -16,14 +16,14 @@ public class ProductConfig {
     public static String statuschecklist = (baseUrl + "statuschecklist.php");
     public static String update_date = (baseUrl + "update_date.php");
     public static String removepersonal = (baseUrl + "removepersonal.php");
-    public static String removeeduca = (baseUrl + "removeeduca.php");
+    public static String removeeduca = (baseUrl + "todolistremove.php");
     public static String edu_exit_grp = (baseUrl + "edu_exit_grp.php");
     public static String delete_task = (baseUrl + "delete_task.php");
     public static String personal_user_input_fetch = (baseUrl + "personal_user_input_fetch.php");
     public static String personal_user_Insights_fetch = (baseUrl + "personal_user_Insights_fetch.php");
     public static String personal_user_input_insert = (baseUrl + "personal_user_input_insert.php");
     public static String category = (baseUrl + "category.php");
-    public static String updatesubjectdurin = (baseUrl + "updatesubjectdurin.php");
+    public static String updatesubjectdurin = (baseUrl + "todoupdate.php");
     public static String opencircle_update = (baseUrl + "opencircle_update.php");
     public static String kby_groupinsert = (baseUrl + "kby_groupinsert.php");
     public static String education_group = (baseUrl + "education_group.php");
@@ -34,10 +34,12 @@ public class ProductConfig {
     public static String kby_group_list = (baseUrl + "kby_group_list.php");
     public static String education_group_list = (baseUrl + "education_group_list.php");
     public static String subcategory = (baseUrl + "subcategory.php");
-    public static String subject_add = (baseUrl + "subject_add.php");
+    public static String subject_add = (baseUrl + "todolist.php");
+    public static String notesadd = (baseUrl + "notesadd.php");
+    public static String notesreport = (baseUrl + "notesreport.php");
     public static String education_new = (baseUrl + "education_grp_add.php");
     public static String education_delete = (baseUrl + "education_grp_del.php");
-    public static String subjectlist = (baseUrl + "subjectlist.php");
+    public static String subjectlist = (baseUrl + "todoreport.php");
     public static String education_exist = (baseUrl + "education_grp_fetch.php");
     public static String education_grp_add = (baseUrl + "education_grp_mem_add.php");
     public static String checklistmultiple = (baseUrl + "checklistmultiple.php");

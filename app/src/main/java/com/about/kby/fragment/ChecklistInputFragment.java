@@ -517,6 +517,7 @@ public class ChecklistInputFragment extends Fragment {
                             //  Toast.makeText(getContext(), "check11", Toast.LENGTH_SHORT).show();
                             updatedate(datesmodelList.get(position).getId(), i);
                         } else {
+                            i=0;
                             updatedate(datesmodelList.get(position).getId(), i);
 
                             //  Toast.makeText(getContext(), "check22", Toast.LENGTH_SHORT).show();
@@ -571,6 +572,7 @@ public class ChecklistInputFragment extends Fragment {
         requestQueue.add(jsObjRequest);
     }
 
+/*
     public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.Holder> {
         public Context context;
         public List<ChecklistModel> papularModelList;
@@ -823,6 +825,242 @@ public class ChecklistInputFragment extends Fragment {
                 return 0;
             }
             return list.size();
+        }
+
+        public class Holder extends RecyclerView.ViewHolder {
+            TextView task;
+            ImageView remove;
+
+            public Holder(@NonNull View itemView) {
+                super(itemView);
+                task = itemView.findViewById(R.id.task);
+                remove = itemView.findViewById(R.id.remove);
+            }
+        }
+    }
+*/
+    public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.Holder> {
+        public Context context;
+        public List<ChecklistModel> papularModelList;
+        private int selectedPos = -1;
+    private int values;
+    private boolean isClickProcessing = false;
+
+        public TaskAdapter(Context context, List<ChecklistModel> itemList) {
+            this.context = context;
+            this.papularModelList = itemList;
+        }
+
+        @NonNull
+        @Override
+        public TaskAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.spiner, parent, false);
+            return new TaskAdapter.Holder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull TaskAdapter.Holder holder, @SuppressLint("RecyclerView") int position) {
+            ChecklistModel model = papularModelList.get(position);
+
+            holder.task.setText(model.getName());
+
+            final boolean isSelected = position == selectedPos;
+            holder.itemView.setBackgroundColor(isSelected ? Color.parseColor("#81B5FA") : Color.parseColor("#FFEB3B"));
+
+            holder.remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removem(model.getId());
+                }
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (isClickProcessing) {
+                        return;
+                    }
+                    isClickProcessing = true;
+                    holder.itemView.setClickable(false);
+
+                    String taId = model.getId();
+                    datelist_check(taId, fromcalantor.getTag());
+                    methods(taId, fromcalantor.getTag());
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (Objects.equals(statuschecklist, "0")) {
+                                calendarView.setVisibility(View.GONE);
+                                calendarViewnewlist.setVisibility(View.VISIBLE);
+                                imageview.setVisibility(View.GONE);
+                            } else {
+                                calendarViewnewlist.setVisibility(View.GONE);
+                                calendarView.setVisibility(View.VISIBLE);
+                                processDatesSequentially(datesList, taId, 0);
+                                imageview.setVisibility(View.GONE);
+                            }
+
+                            notifyItemChanged(selectedPos);
+                            selectedPos = holder.getLayoutPosition();
+                            notifyItemChanged(selectedPos);
+
+                            holder.itemView.setClickable(true);
+                            isClickProcessing = false;
+                        }
+                    }, 1000); // Adjust delay as necessary
+                }
+            });
+        }
+
+        private void removem(String id) {
+            final Map<String, String> params = new HashMap<>();
+            String baseUrl = ProductConfig.delete_task + "?id=" + id;
+
+            final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.e("Response", response);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
+                            Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+                            ChecklistInputFragment.getInstances().name_list();
+                        } else {
+                            Toast.makeText(context, "Activity not found", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("Error", error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+            requestQueue.add(jsObjRequest);
+        }
+
+        private void methods(String taId, Object tag) {
+            final Map<String, String> params = new HashMap<>();
+            String para_str = "?checklist_id=" + taId;
+            String para_str1 = "&month=" + tag;
+            String baseUrl = ProductConfig.statuschecklist + para_str + para_str1;
+
+            datemodelist = new ArrayList<>();
+
+            final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.e("Response", response);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                            statuschecklist = jsonResponse.getString("status");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("Error", error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+            requestQueue.add(jsObjRequest);
+        }
+
+        private ExecutorService executor = Executors.newFixedThreadPool(1);
+        private boolean isInputsRunning = false;
+
+        private void inputs(int status, String date, String ta_id, Runnable callback) {
+            if (isInputsRunning) {
+                return;
+            }
+            isInputsRunning = true;
+
+            String userid = Bsession.getInstance().getUser_id(context);
+            final Map<String, String> params = new HashMap<>();
+
+            String para_str = "?user_id=" + userid;
+            String para_str1 = "&checklist_id=" + ta_id;
+            String para_str2 = "&date=" + date;
+            String para_str3 = "&status=" + status;
+            String para_str4 = "&month=" + fromcalantor.getTag();
+            String baseUrl = ProductConfig.check_list_input + para_str + para_str1 + para_str2 + para_str3 + para_str4;
+
+            StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.e("Response", response);
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                            if (callback != null) {
+                                callback.run();
+                            }
+                        } else if (jsonResponse.has("success") && jsonResponse.getString("success").equals("0")) {
+                            // Handle failure
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        if (callback != null) {
+                            callback.run();
+                        }
+                    }
+                    isInputsRunning = false;
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("Error", error.toString());
+                    isInputsRunning = false;
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+            requestQueue.add(jsObjRequest);
+        }
+
+        private void processDatesSequentially(List<String> datesList, String ta_id, int index) {
+            if (index < datesList.size()) {
+                String date = datesList.get(index);
+                showProgressBar();
+                executor.execute(() -> inputs(0, date, ta_id, () -> {
+                    processDatesSequentially(datesList, ta_id, index + 1);
+                }));
+            } else {
+                values = index - 1;
+                datelist_check(ta_id, fromcalantor.getTag());
+                progressDialog.dismiss();
+                hideProgressBar();
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return papularModelList == null ? 0 : papularModelList.size();
         }
 
         public class Holder extends RecyclerView.ViewHolder {
