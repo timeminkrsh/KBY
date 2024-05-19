@@ -60,4 +60,6 @@ public class ProductConfig {
     public static String personal_grp_add = (baseUrl + "personal_grp_member_add.php");
     public static String personal_grp_fetch = (baseUrl + "personal_grp_member_fetch.php");
     public static String personal_grp_delete = (baseUrl + "personal_grp_member_del.php");
+
+    public static String notes_update = (baseUrl + "notesUpdate.php");
 }

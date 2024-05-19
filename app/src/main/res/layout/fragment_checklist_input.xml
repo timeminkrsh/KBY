@@ -30,10 +30,13 @@
             android:textColor="@color/white"
             android:textSize="@dimen/payu_dimen_18sp"
             android:textStyle="normal" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <EditText
             android:id="@+id/tasknames"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_below="@+id/taskname"
             android:layout_marginStart="20dp"
@@ -55,14 +58,13 @@
             android:layout_height="@dimen/payu_dimen_40dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/payu_dimen_10dp"
             android:background="@drawable/button"
             android:text="Add Task "
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/payu_dimen_20dp"
             android:textStyle="bold" />
-
+        </LinearLayout>
         <!-- <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">-->
@@ -113,8 +115,9 @@
                 <HorizontalScrollView
                     android:id="@+id/horizontalview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/payu_dimen_5dp">
+                    android:layout_height="140dp"
+                    android:layout_marginTop="@dimen/payu_dimen_5dp"
+                    android:layout_marginBottom="@dimen/payu_dimen_5dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"

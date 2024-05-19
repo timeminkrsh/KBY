@@ -54,7 +54,11 @@ public class OpenGroupChecklistAdapter extends RecyclerView.Adapter<OpenGroupChe
         PieData data = new PieData(dataSet);
         ArrayList<Integer> colors = new ArrayList<>();
         try {
-            holder.report_work.setText(model.getDescription());
+            if(!model.getDescription().equals("null")) {
+                holder.report_work.setText(model.getDescription());
+            }else{
+                holder.report_work.setVisibility(View.GONE);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

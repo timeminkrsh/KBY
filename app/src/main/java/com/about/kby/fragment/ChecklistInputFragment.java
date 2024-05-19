@@ -157,7 +157,7 @@ public class ChecklistInputFragment extends Fragment {
         instance = this;
         executor = Executors.newFixedThreadPool(10);
         progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Loading Please wait 10 Sec....");
+        progressDialog.setMessage("Loading Please wait ....");
         progressDialog.setIcon(R.drawable.logo);
         Bundle args = getArguments();
         if (args != null) {
@@ -472,8 +472,39 @@ public class ChecklistInputFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull DateViewHolder holder, int position) {
-            holder.bind(position);
+        public void onBindViewHolder(@NonNull DateViewHolder holder, @SuppressLint("RecyclerView") int position) {
+//            holder.bind(position);
+            calendarView.setVisibility(View.GONE);
+            DateModel model = datesmodelList.get(position);
+            holder.textView.setText(model.getDate());
+            if (Objects.equals(model.getStatus(), "0")) {
+                holder.switchButton.setChecked(false);
+                // Toast.makeText(getContext(), "check11", Toast.LENGTH_SHORT).show();
+
+            } else {
+                holder.switchButton.setChecked(true);
+                // Toast.makeText(getContext(), "check22", Toast.LENGTH_SHORT).show();
+            }
+
+            holder.switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+
+                        int i = 1;
+                        //inputs(i, date, ta_id);
+                        //  Toast.makeText(getContext(), "check11", Toast.LENGTH_SHORT).show();
+                        updatedate(datesmodelList.get(position).getId(), i);
+                    } else {
+                       int i=0;
+                        updatedate(datesmodelList.get(position).getId(), i);
+
+                        //  Toast.makeText(getContext(), "check22", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
 
         }
 
@@ -494,11 +525,11 @@ public class ChecklistInputFragment extends Fragment {
                 switchButton = itemView.findViewById(R.id.switchButton);
             }
 
-            void bind(int position) {
+            /*void bind(int position) {
                 calendarView.setVisibility(View.GONE);
                 DateModel model = datesmodelList.get(position);
-                textView.setText(datesmodelList.get(position).getDate());
-                if (Objects.equals(datesmodelList.get(position).getStatus(), "0")) {
+                textView.setText(model.getDate());
+                if (Objects.equals(model.getStatus(), "0")) {
                     switchButton.setChecked(false);
                     // Toast.makeText(getContext(), "check11", Toast.LENGTH_SHORT).show();
 
@@ -525,7 +556,13 @@ public class ChecklistInputFragment extends Fragment {
                         }
                     }
                 });
-            }
+            }*/
+        }
+
+        public void updateItems(List<DateModel> list){
+            this.datesmodelList = list;
+            notifyDataSetChanged();
+
         }
     }
 
@@ -534,8 +571,9 @@ public class ChecklistInputFragment extends Fragment {
         String para_str = "?id=" + id;
         String para_str1 = "&status=" + staus;
         String baseUrl = ProductConfig.update_date + para_str + para_str1;
+        Log.i("baseUrl--",baseUrl.toString());
         datemodelist = new ArrayList<>();
-        //progressDialog.show();
+        progressDialog.show();
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -560,7 +598,7 @@ public class ChecklistInputFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("Error", error.toString());
-
+                        progressDialog.dismiss();
                     }
                 }) {
             @Override
@@ -884,8 +922,9 @@ public class ChecklistInputFragment extends Fragment {
                     holder.itemView.setClickable(false);
 
                     String taId = model.getId();
-                    datelist_check(taId, fromcalantor.getTag());
-                    methods(taId, fromcalantor.getTag());
+                    methods(taId, fromcalantor.getTag(),holder);
+
+                   /* datelist_check(taId, fromcalantor.getTag());
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -908,7 +947,7 @@ public class ChecklistInputFragment extends Fragment {
                             holder.itemView.setClickable(true);
                             isClickProcessing = false;
                         }
-                    }, 1000); // Adjust delay as necessary
+                    }, 3000); // Adjust delay as necessary*/
                 }
             });
         }
@@ -949,11 +988,14 @@ public class ChecklistInputFragment extends Fragment {
             requestQueue.add(jsObjRequest);
         }
 
-        private void methods(String taId, Object tag) {
+        private void methods(String taId, Object tag, Holder holder) {
+            String userid = Bsession.getInstance().getUser_id(context);
             final Map<String, String> params = new HashMap<>();
-            String para_str = "?checklist_id=" + taId;
-            String para_str1 = "&month=" + tag;
-            String baseUrl = ProductConfig.statuschecklist + para_str + para_str1;
+
+            String para_str = "?user_id=" + userid;
+            String para_str1 = "&checklist_id=" + taId;
+            String para_str2 = "&month=" + tag;
+            String baseUrl = ProductConfig.statuschecklist + para_str + para_str1 + para_str2;
 
             datemodelist = new ArrayList<>();
 
@@ -965,6 +1007,31 @@ public class ChecklistInputFragment extends Fragment {
                         JSONObject jsonResponse = new JSONObject(response);
                         if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
                             statuschecklist = jsonResponse.getString("status");
+
+                            datelist_check(taId, fromcalantor.getTag());
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (Objects.equals(statuschecklist, "0")) {
+                                        calendarView.setVisibility(View.GONE);
+                                        calendarViewnewlist.setVisibility(View.VISIBLE);
+                                        imageview.setVisibility(View.GONE);
+                                    } else {
+                                        calendarViewnewlist.setVisibility(View.GONE);
+                                        calendarView.setVisibility(View.VISIBLE);
+                                        processDatesSequentially(datesList, taId, 0);
+                                        imageview.setVisibility(View.GONE);
+                                    }
+
+                                    notifyItemChanged(selectedPos);
+                                    selectedPos = holder.getLayoutPosition();
+                                    notifyItemChanged(selectedPos);
+
+                                    holder.itemView.setClickable(true);
+                                    isClickProcessing = false;
+                                }
+                            }, 1000); // Adjust delay as necessary
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -1048,7 +1115,8 @@ public class ChecklistInputFragment extends Fragment {
                 String date = datesList.get(index);
                 showProgressBar();
                 executor.execute(() -> inputs(0, date, ta_id, () -> {
-                    processDatesSequentially(datesList, ta_id, index + 1);
+//                    processDatesSequentially(datesList, ta_id, index + 1);
+                    processDatesSequentially(datesList, ta_id, datesList.size());
                 }));
             } else {
                 values = index - 1;
@@ -1080,10 +1148,15 @@ public class ChecklistInputFragment extends Fragment {
     }
 
     private void datelist_check(String taId, Object tag) {
+
+        String userid = Bsession.getInstance().getUser_id(getContext());
         final Map<String, String> params = new HashMap<>();
-        String para_str = "?checklist_id=" + taId;
-        String para_str1 = "&month=" + tag;
-        String baseUrl = ProductConfig.datelist_check + para_str + para_str1;
+
+        String para_str = "?user_id=" + userid;
+        String para_str1 = "&checklist_id=" + taId;
+        String para_str2 = "&month=" + tag;
+        String baseUrl = ProductConfig.datelist_check + para_str + para_str1 + para_str2;
+        Log.i("=======","datemodelist==baseUrl="+baseUrl);
         datemodelist = new ArrayList<>();
         //  progressDialog.show();
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
@@ -1108,11 +1181,21 @@ public class ChecklistInputFragment extends Fragment {
                             imageview.setVisibility(View.GONE);
 
                         }
+
+                        Log.i("=======","datemodelist=="+datemodelist.size());
+                        Log.i("=======","datemodelist=="+datemodelist);
+
                         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 6);
                         calendarViewnewlist.setLayoutManager(layoutManager);
                         DatelistAdapter packageListAdapter = new DatelistAdapter(getContext(), datemodelist);
                         calendarViewnewlist.setAdapter(packageListAdapter);
                         calendarViewnewlist.setHasFixedSize(true);
+
+//                        packageListAdapter.updateItems(datemodelist);
+
+
+
+
 
                     } else {
                         // Toast.makeText(getContext(), "List Not Found111", Toast.LENGTH_SHORT).show();

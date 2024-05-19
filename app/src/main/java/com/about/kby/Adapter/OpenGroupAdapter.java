@@ -52,7 +52,11 @@ public class OpenGroupAdapter extends RecyclerView.Adapter<OpenGroupAdapter.Hold
         setupPieChart(holder.pieChart, model.getSubcategory());
 
         try {
-            holder.report_work.setText(model.getDescription());
+            if(!model.getDescription().equals("null")) {
+                holder.report_work.setText(model.getDescription());
+            }else{
+                holder.report_work.setVisibility(View.GONE);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

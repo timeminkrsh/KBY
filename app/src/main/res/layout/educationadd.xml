@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="horizontal">
 
-<TextView
-    android:id="@+id/txt_notes"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textStyle="bold"
-    android:textAlignment="textStart"
-    android:text=""
-    android:layout_margin="@dimen/payu_dimen_5dp"
-    android:textSize="@dimen/payu_dimen_16dp"
-    android:textColor="@color/white"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/payu_dimen_16dp"
+            android:imeOptions="actionDone"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_edit_24_white" />
+
+        <ImageView
+            android:id="@+id/iv_save"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"
+            android:src="@drawable/baseline_check_circle_24_white"
+            app:tint="@color/Green" />
+    </RelativeLayout>
 </LinearLayout>

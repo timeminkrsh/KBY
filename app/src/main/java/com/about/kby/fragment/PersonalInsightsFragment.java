@@ -297,6 +297,7 @@ public class PersonalInsightsFragment extends Fragment {
                             String para_str = "?user_id=" + Bsession.getInstance().getUser_id(getContext());
                             String para_str1 = "&user=" + Bsession.getInstance().getUser_mobile(getContext());
                             String baseUrl = ProductConfig.personal_exist + para_str + para_str1;
+                            System.out.println("baseurl===" + baseUrl);
                             final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -470,6 +471,7 @@ public class PersonalInsightsFragment extends Fragment {
     private void subcategory() {
         final Map<String, String> params = new HashMap<>();
         String baseUrl = ProductConfig.subcategory;
+        System.out.println("baseurl===" + baseUrl);
 
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
@@ -572,6 +574,7 @@ public class PersonalInsightsFragment extends Fragment {
         recycle.setVisibility(View.VISIBLE);
         String baseUrl = ProductConfig.personal_user_input_fetch + "?user_id=" + Bsession.getInstance().getUser_id(getContext()) +
                 "&date=" + selectedDateStr;
+        System.out.println("baseurl===" + baseUrl);
         pieChart.clear();
         PojoLists.clear();
         PojoList.clear();
@@ -739,6 +742,7 @@ public class PersonalInsightsFragment extends Fragment {
         recycle.setVisibility(View.VISIBLE);
         String baseUrl = ProductConfig.personal_user_input_fetch + "?user_id=" + Bsession.getInstance().getUser_id(getContext()) +
                 "&date=" + selectedDateStr;
+        System.out.println("baseurl===" + baseUrl);
         pieChart.clear();
         PojoLists.clear();
         PojoList.clear();

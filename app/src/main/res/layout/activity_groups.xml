@@ -331,30 +331,37 @@ and fulfilling together"
 
 
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/addbutton"
-                android:layout_width="@dimen/payu_dimen_110dp"
-                android:layout_height="@dimen/payu_dimen_40dp"
-                android:layout_below="@+id/tableLayout"
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="@dimen/payu_dimen_10dp"
-                android:layout_marginTop="@dimen/payu_dimen_10dp"
-                android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                android:layout_marginBottom="@dimen/payu_dimen_10dp"
-                android:background="@drawable/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_below="@+id/tableLayout"
+                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Save"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/addbutton"
+                    android:layout_width="@dimen/payu_dimen_110dp"
+                    android:layout_height="@dimen/payu_dimen_40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginTop="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                    android:background="@drawable/button"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
 
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/editbutton"
@@ -363,6 +370,7 @@ and fulfilling together"
                 android:layout_below="@+id/tableLayout"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
+                android:visibility="gone"
                 android:layout_marginEnd="@dimen/payu_dimen_10dp"
                 android:layout_marginTop="@dimen/payu_dimen_10dp"
                 android:layout_marginBottom="@dimen/payu_dimen_10dp"

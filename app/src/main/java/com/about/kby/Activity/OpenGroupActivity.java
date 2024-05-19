@@ -119,6 +119,7 @@ public class OpenGroupActivity extends AppCompatActivity {
         final Map<String, String> params = new HashMap<>();
         checklist_recycle.setVisibility(View.VISIBLE);
         String baseUrl = ProductConfig.checklist_openlist;
+        System.out.println("baseurl" + baseUrl);
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -335,13 +335,85 @@ public class GroupsActivity extends AppCompatActivity {
 
         @SuppressLint("SetTextI18n")
         @Override
-        public void onBindViewHolder(@NonNull SubjecAdapter.ItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        public void onBindViewHolder(@NonNull ItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
             EducationModel model = pesrsonalList.get(position);
-            holder.txt_notes.setText(pesrsonalList.get(position).getSubject());
-            holder.txt_notes.setOnClickListener(v -> {
+            holder.et_notes.setText(pesrsonalList.get(position).getSubject());
+
+            holder.et_notes.setOnFocusChangeListener((v, hasFocus) -> {
+                if(hasFocus){
+                    holder.iv_save.setVisibility(View.VISIBLE);
+                    holder.iv_edit.setVisibility(View.GONE);
+                }else{
+                    holder.iv_save.setVisibility(View.GONE);
+                    holder.iv_edit.setVisibility(View.VISIBLE);
+                }
             });
-            editbutton = findViewById(R.id.editbutton);
+
+            holder.et_notes.setOnClickListener(v -> {
+                holder.iv_save.setVisibility(View.VISIBLE);
+                holder.iv_edit.setVisibility(View.GONE);
+            });
+            holder.iv_edit.setOnClickListener(v -> {
+                holder.iv_save.setVisibility(View.VISIBLE);
+                holder.iv_edit.setVisibility(View.GONE);
+                holder.et_notes.requestFocus();
+                holder.et_notes.setSelection(holder.et_notes.getText().length());
+
+            });
+            holder.iv_save.setOnClickListener(v -> {
+                String noteTxt = holder.et_notes.getText().toString();
+                if (noteTxt.isEmpty()) {
+                    holder.et_notes.requestFocus();
+                    Toast.makeText(GroupsActivity.this, "Note is empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    EducationModel modelTemp = pesrsonalList.get(position);
+                    final Map<String, String> params = new HashMap<>();
+                    String para_str = "?userid=" + Bsession.getInstance().getUser_id(GroupsActivity.this);
+                    String para1 = "&id=" + modelTemp.getId();
+                    String para2 = "&title=" + noteTxt;
+                    String baseUrl = ProductConfig.notes_update + para_str + para1 + para2;
+                    System.out.println("base=" + baseUrl);
+                    progressDialog.show();
+
+                    final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.e("Response", response.toString());
+                            try {
+                                progressDialog.dismiss();
+                                JSONObject jsonResponse = new JSONObject(response);
+                                if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
+                                    holder.iv_save.setVisibility(View.GONE);
+                                    holder.iv_edit.setVisibility(View.VISIBLE);
+//                                    holder.et_notes.clearFocus();
+                                } else {
+                                    //Toast.makeText(GroupsActivity.this, "Activity not found", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                progressDialog.dismiss();
+                            }
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("Error", error.toString());
+                                    progressDialog.dismiss();
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            return params;
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(GroupsActivity.this);
+                    requestQueue.add(jsObjRequest);                }
+
+            });
+            /*editbutton = findViewById(R.id.editbutton);
             editbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -351,7 +423,7 @@ public class GroupsActivity extends AppCompatActivity {
                     txt_note.setText(currentNote);
 
                 }
-            });
+            });*/
 
           /*  holder.remove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -371,14 +443,18 @@ public class GroupsActivity extends AppCompatActivity {
         }
 
         public class ItemViewHolder extends RecyclerView.ViewHolder {
-            TextView txt_notes;
+            EditText et_notes;
             ImageView remove;
+            ImageView iv_save;
+            ImageView iv_edit;
 
             public ItemViewHolder(View itemView) {
                 super(itemView);
 
                 remove = itemView.findViewById(R.id.remove);
-                txt_notes = itemView.findViewById(R.id.txt_notes);
+                et_notes = itemView.findViewById(R.id.et_notes);
+                iv_save = itemView.findViewById(R.id.iv_save);
+                iv_edit = itemView.findViewById(R.id.iv_edit);
 
 
             }
