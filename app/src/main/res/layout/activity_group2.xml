@@ -64,14 +64,29 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='"Share \n with \n Everyone globally "'
-                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
-                            android:layout_marginStart="@dimen/payu_dimen_30dp"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='"Share with Everyone globally "'
+                                android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                                android:textColor="@color/white"
+                                android:textSize="17sp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="(public)"
+                                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                                android:textColor="@color/white"
+                                android:textSize="17sp"/>
+
+                        </LinearLayout>
 
                         <ImageView
                             android:layout_width="@dimen/payu_dimen_50dp"
@@ -83,24 +98,19 @@
 
                     </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(public)"
-                        android:layout_marginStart="@dimen/payu_dimen_40dp"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"/>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/payu_dimen_30dp"
                             android:layout_height="@dimen/payu_dimen_30dp"
                             android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -108,9 +118,9 @@
                             android:text="Sharing your daily routine can inspire &amp; motivate other, let's make each day more productive
 and fulfilling together"
                             android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                            android:justificationMode="inter_word"
+                            android:layout_marginBottom="@dimen/payu_dimen_20dp"
                             android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
                             android:textColor="@color/white"
                             android:textSize="14sp"/>
 
@@ -163,14 +173,29 @@ and fulfilling together"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='"Share \n with \n known people"'
-                            android:layout_marginBottom="@dimen/payu_dimen_5dp"
-                            android:layout_marginStart="@dimen/payu_dimen_30dp"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='"Share with known people"'
+                                android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                                android:textColor="@color/white"
+                                android:textSize="17sp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" (Private)"
+                                android:layout_marginStart="@dimen/payu_dimen_20dp"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/payu_dimen_18sp"/>
+
+                        </LinearLayout>
 
                         <ImageView
                             android:layout_width="@dimen/payu_dimen_50dp"
@@ -182,33 +207,28 @@ and fulfilling together"
 
                     </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(Private)"
-                        android:layout_marginStart="@dimen/payu_dimen_40dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/payu_dimen_18sp"/>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/payu_dimen_30dp"
                             android:layout_height="@dimen/payu_dimen_30dp"
                             android:src="@drawable/info"
-                            android:layout_margin="@dimen/payu_dimen_10dp"/>
+                            android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                            android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                            android:layout_marginStart="@dimen/payu_dimen_20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="It is fun showing it to your friends and family about your doings"
                             android:layout_marginTop="@dimen/payu_dimen_10dp"
-                            android:layout_marginBottom="@dimen/payu_dimen_40dp"
+                            android:layout_marginBottom="@dimen/payu_dimen_20dp"
                             android:layout_marginEnd="@dimen/payu_dimen_10dp"
-                            android:layout_marginStart="@dimen/payu_dimen_20dp"
+                            android:justificationMode="inter_word"
                             android:textColor="@color/white"
                             android:textSize="14sp"/>
 

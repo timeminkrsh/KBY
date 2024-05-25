@@ -83,6 +83,7 @@ public class PersonalActivity extends AppCompatActivity {
                             "android:switcher:" + R.id.viewpager + ":1");
                     if (fragment instanceof PersonalInsightsFragment) {
                         ((PersonalInsightsFragment) fragment).personal_user_input_fetch(selectedDateStr);
+                        System.out.println("selectedDateStr=="+selectedDateStr);
                     }
                 }
             }
@@ -108,7 +109,7 @@ public class PersonalActivity extends AppCompatActivity {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(
                     "android:switcher:" + R.id.viewpager + ":1");
             if (fragment instanceof PersonalInsightsFragment) {
-               // ((PersonalInsightsFragment) fragment).personal_user_input_fetch();
+               ((PersonalInsightsFragment) fragment).personal_user_input_fetch(selectedDateStr);
             }
         }
     }

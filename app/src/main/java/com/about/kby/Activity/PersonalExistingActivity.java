@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.about.kby.Adapter.ExistingGroupAdapter;
 import com.about.kby.Adapter.PersonalGroupAdapter;
 import com.about.kby.Bsession;
+import com.about.kby.Group2Activity;
 import com.about.kby.ProductConfig;
 import com.about.kby.R;
 import com.about.kby.model.ChecklistModel;
@@ -72,7 +73,7 @@ public class PersonalExistingActivity extends AppCompatActivity {
         backimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PersonalExistingActivity.this, HomeActivity.class);
+                Intent intent = new Intent(PersonalExistingActivity.this, Group2Activity.class);
                 startActivity(intent);
             }
         });

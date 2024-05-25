@@ -120,6 +120,11 @@ public class ChecklistInputFragment extends Fragment {
 
     RecyclerView calendarView, recycltask, calendarViewnewlist;
     Spinner fromcalantor;
+    Spinner selecttask;
+
+    Button btnRemoveTask;
+
+    String selectedTaskId = "";
     int itemLists;
     private DateAdapter dateAdapter;
     List<String> datesList = new ArrayList<>();
@@ -146,6 +151,8 @@ public class ChecklistInputFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_checklist_input, container, false);
 
         fromcalantor = view.findViewById(R.id.fromcalantor);
+        selecttask = view.findViewById(R.id.selecttask);
+        btnRemoveTask = view.findViewById(R.id.btnRemoveTask);
         progressBar = view.findViewById(R.id.progressBar);
         calendarView = view.findViewById(R.id.calendarView);
         addbutton = view.findViewById(R.id.addbutton);
@@ -225,6 +232,43 @@ public class ChecklistInputFragment extends Fragment {
             }
         });
 
+        selecttask.setVisibility(View.INVISIBLE);
+        btnRemoveTask.setVisibility(View.INVISIBLE);
+        TaskAdapter taskAdapter = new TaskAdapter(getContext(), namelist);
+
+        btnRemoveTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                taskAdapter.removem(selectedTaskId);
+            }
+        });
+        selecttask.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                // Now you have the name of the selected item, you can use it as needed
+                selecttask.setTag(selectedItem);
+                //counts(selectedItem);
+                for (int i = 0; i < namelist.size(); i++) {
+                    if (namelist.get(i).name.equals(selectedItem)) {
+                        selectedTaskId = namelist.get(i).id;
+                        taskAdapter.methods2(selectedTaskId);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+
+
+
         final String[] months = new DateFormatSymbols().getMonths();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, months);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -288,6 +332,7 @@ public class ChecklistInputFragment extends Fragment {
 
 
     private void name_list() {
+
         final Map<String, String> params = new HashMap<>();
         String para_str = "?task_id=" + taskId;
         String baseUrl = ProductConfig.tasklist + para_str;
@@ -311,22 +356,39 @@ public class ChecklistInputFragment extends Fragment {
                             namelist.add(model);
                         }
                         recycltask.setVisibility(View.VISIBLE);
-                        TaskAdapter packageListAdapter = new TaskAdapter(getContext(), namelist);
+                       /* TaskAdapter packageListAdapter = new TaskAdapter(getContext(), namelist);
                         recycltask.setAdapter(packageListAdapter);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recycltask.setLayoutManager(gridLayoutManager);
-                        recycltask.setHasFixedSize(true);
+                        recycltask.setHasFixedSize(true);*/
                         addtask_btn.setClickable(true);
 
+
+
+                        // Populate the Spinner with task names after retrieving all the names
+                        List<String> names = new ArrayList<>();
+                        for (ChecklistModel models : namelist) {
+                            names.add(models.getName());
+                        }
+                        String[] items = names.toArray(new String[0]);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
+                        selecttask.setAdapter(adapter);
+                        selecttask.setVisibility(View.VISIBLE);
+                        btnRemoveTask.setVisibility(View.VISIBLE);
+
                     } else if (jsonResponse.has("text") && jsonResponse.getString("text").equals("Task List Empty!")) {
-                        recycltask.setVisibility(View.GONE);
+//                        recycltask.setVisibility(View.GONE);
                         calendarView.setVisibility(View.GONE);
                         calendarViewnewlist.setVisibility(View.GONE);
                         imageview.setVisibility(View.VISIBLE);
                         addtask_btn.setClickable(true);
 
+                        selecttask.setVisibility(View.INVISIBLE);
+                        btnRemoveTask.setVisibility(View.INVISIBLE);
+
                         //  Toast.makeText(getContext(), "Existing group not found", Toast.LENGTH_SHORT).show();
                     }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -573,13 +635,13 @@ public class ChecklistInputFragment extends Fragment {
         String baseUrl = ProductConfig.update_date + para_str + para_str1;
         Log.i("baseUrl--",baseUrl.toString());
         datemodelist = new ArrayList<>();
-        progressDialog.show();
+//        progressDialog.show();
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Response", response.toString());
                 try {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
 
@@ -598,7 +660,7 @@ public class ChecklistInputFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("Error", error.toString());
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
                     }
                 }) {
             @Override
@@ -964,6 +1026,7 @@ public class ChecklistInputFragment extends Fragment {
                         JSONObject jsonResponse = new JSONObject(response);
                         if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
                             Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+                            selectedTaskId = "";
                             ChecklistInputFragment.getInstances().name_list();
                         } else {
                             Toast.makeText(context, "Activity not found", Toast.LENGTH_SHORT).show();
@@ -1052,6 +1115,70 @@ public class ChecklistInputFragment extends Fragment {
             RequestQueue requestQueue = Volley.newRequestQueue(context);
             requestQueue.add(jsObjRequest);
         }
+        private void methods2(String taId) {
+        String userid = Bsession.getInstance().getUser_id(context);
+        final Map<String, String> params = new HashMap<>();
+
+        String para_str = "?user_id=" + userid;
+        String para_str1 = "&checklist_id=" + taId;
+        String para_str2 = "&month=" + fromcalantor.getTag();
+        String baseUrl = ProductConfig.statuschecklist + para_str + para_str1 + para_str2;
+
+        datemodelist = new ArrayList<>();
+
+        final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("Response", response);
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                        statuschecklist = jsonResponse.getString("status");
+
+                        datelist_check(taId, fromcalantor.getTag());
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (Objects.equals(statuschecklist, "0")) {
+                                    calendarView.setVisibility(View.GONE);
+                                    calendarViewnewlist.setVisibility(View.VISIBLE);
+                                    imageview.setVisibility(View.GONE);
+                                } else {
+                                    calendarViewnewlist.setVisibility(View.GONE);
+                                    calendarView.setVisibility(View.VISIBLE);
+                                    processDatesSequentially(datesList, taId, 0);
+                                    imageview.setVisibility(View.GONE);
+                                }
+
+                               /* notifyItemChanged(selectedPos);
+                                selectedPos = holder.getLayoutPosition();
+                                notifyItemChanged(selectedPos);
+
+                                holder.itemView.setClickable(true);
+                                isClickProcessing = false;*/
+                            }
+                        }, 1000); // Adjust delay as necessary
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error", error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(jsObjRequest);
+    }
 
         private ExecutorService executor = Executors.newFixedThreadPool(1);
         private boolean isInputsRunning = false;

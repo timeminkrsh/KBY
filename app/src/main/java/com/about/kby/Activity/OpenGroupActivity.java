@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.about.kby.Adapter.ChecklistAdapter;
 import com.about.kby.Adapter.OpenGroupAdapter;
 import com.about.kby.Bsession;
+import com.about.kby.Group2Activity;
 import com.about.kby.ProductConfig;
 import com.about.kby.R;
 import com.about.kby.fragment.PersonalInputFragment;
@@ -201,7 +202,7 @@ public class OpenGroupActivity extends AppCompatActivity {
                        for (int i = 0;i < jsonlist.length(); i++) {
                            JSONObject jsonObject1 = jsonlist.getJSONObject(i);
                            OpenModel model1 = new OpenModel();
-                            model1.setUser_name(jsonObject1.getString("user_name"));
+                           model1.setUser_name(jsonObject1.getString("user_name"));
                            model1.setDescription(jsonObject1.getString("description"));
 
                            JSONArray jArrItemData = new JSONArray(jsonObject1.getString("subcategory"));
@@ -323,7 +324,7 @@ public class OpenGroupActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(OpenGroupActivity.this, GroupsActivity.class);
+        Intent intent = new Intent(OpenGroupActivity.this, Group2Activity.class);
         startActivity(intent);
         super.onBackPressed();
     }

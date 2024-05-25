@@ -96,7 +96,7 @@ public class PersonalNewGroupActivity extends AppCompatActivity {
         backimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PersonalNewGroupActivity.this, HomeActivity.class);
+                Intent intent = new Intent(PersonalNewGroupActivity.this, PersonalNewGroupActivity.class);
                 startActivity(intent);
             }
         });
@@ -123,7 +123,7 @@ public class PersonalNewGroupActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Education group created successfully", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(PersonalNewGroupActivity.this, PersonalExistingActivity.class));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Update Failed, for further update contact to admin", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_LONG).show();
 
                         finish();
                     }

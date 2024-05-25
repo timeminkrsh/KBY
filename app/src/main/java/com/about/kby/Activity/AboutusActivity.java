@@ -32,7 +32,7 @@ public class AboutusActivity extends AppCompatActivity {
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true); // Enable JavaScript (if needed)
 
-        webview.loadUrl("https://minswaysolutions.com/webteam/kby/about.php");
+        webview.loadUrl("https://kby.co.in/about.php");
         backimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -135,6 +135,7 @@ public class PersonalInsightsFragment extends Fragment {
     private List<PieEntry> entries = new ArrayList<>();
     private ArrayList<PersonalModel> countries_list = new ArrayList<>();
     EditText editText;
+    String idString;
     RelativeLayout layutss;
     RecyclerView recycle;
 
@@ -277,7 +278,7 @@ public class PersonalInsightsFragment extends Fragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             // Handle OK button click
-                                            methods(idList, editText.getText().toString());
+                                            methods(idString, editText.getText().toString());
                                         }
                                     })
                                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -289,9 +290,7 @@ public class PersonalInsightsFragment extends Fragment {
 
                             AlertDialog alertDialog = builder.create();
                             alertDialog.show();
-
-
-                        }
+                      }
                         if (menuItem.getItemId() == R.id.pers) {
                             final Map<String, String> params = new HashMap<>();
                             String para_str = "?user_id=" + Bsession.getInstance().getUser_id(getContext());
@@ -330,7 +329,8 @@ public class PersonalInsightsFragment extends Fragment {
                                                                     @Override
                                                                     public void onClick(DialogInterface dialog, int which) {
                                                                         // Handle OK button click
-                                                                        //insertgroup(description,groupId,idListc,idListsub,idListdu);
+
+                                                                        insertgroup(description,groupId,idListc,idListsub,idListdu);
                                                                     }
                                                                 })
                                                                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -346,11 +346,11 @@ public class PersonalInsightsFragment extends Fragment {
                                                         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {
-                                                                // Retrieve the EditText value when the OK button is clicked
+
                                                                 String description = editText.getText().toString();
                                                                 Log.d("description=", editText.getText().toString());
                                                                 insertgroup(description, groupId, idListc, idListsub, idListdu);
-                                                                alertDialog.dismiss(); // Dismiss the dialog after handling the click
+                                                                alertDialog.dismiss();
                                                             }
                                                         });
                                                         return false;
@@ -415,25 +415,24 @@ public class PersonalInsightsFragment extends Fragment {
         String para_str6 = "&description=" + description;
         String baseUrl = ProductConfig.kby_groupinsert + "?user_id=" + Bsession.getInstance().getUser_id(getContext()) + para_str2 + para_str3 + para_str4 + para_str5 + para_str6;
         System.out.println("baseurl===" + baseUrl);
+
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.e("Response", response.toString());
+                Log.i("Response", response.toString());
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
-
-                        Toast.makeText(getContext(), "Update On Personal Circle", Toast.LENGTH_SHORT).show();
-
+                    if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                        Toast.makeText(getContext(), " Shared Successfully ", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         },
+
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -527,12 +526,12 @@ public class PersonalInsightsFragment extends Fragment {
 
     }
 
-    private void methods(ArrayList<String> idList, String description) {
+    private void methods(String idList, String description) {
         final Map<String, String> params = new HashMap<>();
-        String idString = TextUtils.join(",", idList);
         String para_str2 = "&type=" + "opencircle";
-        String para_str3 = "&idss=" + idString;
-        String para_str4 = "&description=" + description;
+        String para_str3 = "&idss=" + idList;
+        System.out.println("ID==: " + idList);
+        String para_str4 = "&descriptions=" + description;
 
         String baseUrl = ProductConfig.opencircle_update + "?user_id=" + Bsession.getInstance().getUser_id(getContext()) + para_str2 + para_str3 + para_str4;
         System.out.println("baseurl===" + baseUrl);
@@ -543,7 +542,7 @@ public class PersonalInsightsFragment extends Fragment {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
-                        Toast.makeText(getContext(), "Update On Open Circle", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), " Shared Successfully ", Toast.LENGTH_SHORT).show();
                     } else {
                         // Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
                     }
@@ -594,12 +593,8 @@ public class PersonalInsightsFragment extends Fragment {
                         for (int j = 0; j < jsonlist.length(); j++) {
                             JSONObject jsonObject1 = jsonlist.getJSONObject(j);
 
-                           // String checkAlreayAdded = isTimeAlreadyAdded(PojoLists, jsonObject1.getString("sub_category"));
-                           // int position = alreadyAddedPositionOfValue(PojoLists, jsonObject1.getString("sub_category"));
-
                             PersonalPojo personalPojo = new PersonalPojo();
                             String[] timeParts;
-                           // if (checkAlreayAdded.isEmpty()) {
                                 personalPojo.setId(jsonObject1.getString("id"));
                                 personalPojo.setCategory(jsonObject1.getString("category"));
                                 personalPojo.setSubategory(jsonObject1.getString("sub_category"));
@@ -607,19 +602,6 @@ public class PersonalInsightsFragment extends Fragment {
                                 String timeString = personalPojo.getDuriation(); // Assuming timeString is in the format HH:mm
                                 timeParts = timeString.split(":"); // Splitting hours and minutes
                                 PojoLists.add(personalPojo);
-                        //    } else {
-                              //  LocalTime time1 = null;
-                              //  LocalTime time2 = null;
-                               // LocalTime sum = null;
-                            //    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                             //       time1 = LocalTime.parse(jsonObject1.getString("time"));
-                              //      time2 = LocalTime.parse(checkAlreayAdded);
-                                    // Calculate the difference in minutes
-                                 //   sum = time1.plusHours(time2.getHour()).plusMinutes(time2.getMinute());
-                              //  }
-
-
-/// overall time change
 
                             idList.add(personalPojo.getId());
                             idListc.add(personalPojo.getCategory());
@@ -629,10 +611,11 @@ public class PersonalInsightsFragment extends Fragment {
 
                         }
                         String[] idArray = idList.toArray(new String[0]);
-
                         for (String id : idArray) {
                             System.out.println("ID: " + id);
-
+                            idString = TextUtils.join(",", idArray);
+                            System.out.println("ID==: " + idString);
+                           // return;
                         }
                         ArrayList<Integer> colors = new ArrayList<>();
 
@@ -665,15 +648,12 @@ public class PersonalInsightsFragment extends Fragment {
                             PieEntryModel entryModel = new PieEntryModel(model.getSubategory(), model.getDuriation(), color);
                             entryModels.add(entryModel);
                         }
-
                         recycle.setLayoutManager(new LinearLayoutManager(getContext()));
                         PieEntryAdapter adapter = new PieEntryAdapter(entryModels);
                         recycle.setAdapter(adapter);
                     } else {
                         recycle.setVisibility(View.GONE);
-                        //Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -697,45 +677,6 @@ public class PersonalInsightsFragment extends Fragment {
         getContext();
     }
 
-/*    public String isTimeAlreadyAdded(List<PersonalPojo> list, String valueToCheck) {
-        String duration = "";
-        for (PersonalPojo item : list) {
-            if (item.getSubategory().equals(valueToCheck)) {
-                duration = item.getDuriation();
-                return duration; // Value found in the list
-            }
-        }
-        return duration; // Value not found in the list
-    }
-
-    public int alreadyAddedPositionOfValue(List<PersonalPojo> list, String valueToCheck) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getSubategory().equals(valueToCheck)) {
-                return i; // Return the position if value is found in the list
-            }
-        }
-        return -1; // Return -1 if value is not found in the list
-    }
-
-    public String isTimeAlreadyAddedToDate(List<InputInsightModel> list, String valueToCheck) {
-        String duration = "";
-        for (InputInsightModel item : list) {
-            if (item.getSubategory().equals(valueToCheck)) {
-                duration = item.getDuriation();
-                return duration; // Value found in the list
-            }
-        }
-        return duration; // Value not found in the list
-    }
-
-    public int alreadyAddedPositionOfValueToDate(List<InputInsightModel> list, String valueToCheck) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getSubategory().equals(valueToCheck)) {
-                return i; // Return the position if value is found in the list
-            }
-        }
-        return -1; // Return -1 if value is not found in the list
-    }*/
 
     public void personal_user_inut_fetch(final boolean isCategory) {
         final Map<String, String> params = new HashMap<>();
@@ -1077,6 +1018,7 @@ public class PersonalInsightsFragment extends Fragment {
         public int getItemCount() {
             return entryList.size();
         }
+
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             View colorBlock;

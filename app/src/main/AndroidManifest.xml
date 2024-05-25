@@ -16,6 +16,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".SampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".Group2Activity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

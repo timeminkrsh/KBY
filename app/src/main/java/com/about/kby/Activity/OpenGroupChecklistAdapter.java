@@ -52,7 +52,6 @@ public class OpenGroupChecklistAdapter extends RecyclerView.Adapter<OpenGroupChe
 
         PieDataSet dataSet = new PieDataSet(entries, "");
         PieData data = new PieData(dataSet);
-        ArrayList<Integer> colors = new ArrayList<>();
         try {
             if(!model.getDescription().equals("null")) {
                 holder.report_work.setText(model.getDescription());
@@ -62,13 +61,11 @@ public class OpenGroupChecklistAdapter extends RecyclerView.Adapter<OpenGroupChe
         }catch (Exception e){
             e.printStackTrace();
         }
-        for (int color : ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color);
-        }
+        ArrayList<Integer> colors = new ArrayList<>();
 
-        for (int color : ColorTemplate.JOYFUL_COLORS) {
-            colors.add(color);
-        }
+// Add red and green colors
+        colors.add(Color.GREEN);
+        colors.add(Color.RED);
 
         dataSet.setColors(colors);
         holder.pieChart.setData(data);

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class FamilyAddActivity extends AppCompatActivity {
     TextView txt_toolbar;
     EditText et_number;
     Button family_add;
+    ImageView backimage;
     RecyclerView rv_familylist;
     String group_id;
     ProgressDialog progressDialog;
@@ -49,7 +51,7 @@ public class FamilyAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_add);
-
+        backimage =  findViewById(R.id.backimage);
         txt_toolbar = findViewById(R.id.txt_toolbar);
         et_number = findViewById(R.id.et_number);
         family_add = findViewById(R.id.family_add);
@@ -66,6 +68,13 @@ public class FamilyAddActivity extends AppCompatActivity {
         progressDialog2.setMessage("Loading.....");
 
         name_list();
+        backimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FamilyAddActivity.this, FamilyActivity.class);
+                startActivity(intent);
+            }
+        });
 
         family_add.setOnClickListener(new View.OnClickListener() {
             @Override

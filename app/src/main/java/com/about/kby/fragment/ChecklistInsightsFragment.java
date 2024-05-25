@@ -73,11 +73,11 @@ public class ChecklistInsightsFragment extends Fragment {
     PieChart pieChart;
     String taskId = "";
     ArrayList<ChecklistModel> namelist = new ArrayList<>();
-
+    ArrayList<String> dict_id = new ArrayList<String>();
     TextView shares;
     Spinner selecttask;
     Spinner selectmonth;
-    String selectedMonth;
+    String selectedMonth,namelistid;
     TextView countone, countzero;
     ImageView imageview;
     RelativeLayout relativelaouyt;
@@ -140,6 +140,7 @@ public class ChecklistInsightsFragment extends Fragment {
             taskId = args.getString("task_id");
             System.out.println("taskid=" + taskId);
         }
+
         name_list();
 
         shares.setOnClickListener(new View.OnClickListener() {
@@ -264,16 +265,17 @@ public class ChecklistInsightsFragment extends Fragment {
             }
         });
 
-                name_list();
 
         selecttask.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @SuppressLint("ResourceType")
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
+                String selectedsItem = dict_id.get(position);
+                System.out.println("selec-==-=="+selectedsItem);
                 // Now you have the name of the selected item, you can use it as needed
                 selecttask.setTag(selectedItem);
-                counts(selectedItem);
+                counts(selectedsItem);
             }
 
             @Override
@@ -357,8 +359,10 @@ public class ChecklistInsightsFragment extends Fragment {
                 Log.e("Response", response.toString());
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    if (jsonResponse.has("result") && jsonResponse.getString("result").equals("Success")) {
+                    if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
+                        Toast.makeText(getContext(), "Shared Successfully", Toast.LENGTH_SHORT).show();
                     } else {
+
                     }
 
                 } catch (JSONException e) {
@@ -371,6 +375,7 @@ public class ChecklistInsightsFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Log.e("Error", error.toString());
                         // Handle the error response here
+
                     }
                 }) {
             @Override
@@ -401,7 +406,7 @@ public class ChecklistInsightsFragment extends Fragment {
                     JSONObject jsonResponse = new JSONObject(response);
                     if (jsonResponse.has("success") && jsonResponse.getString("success").equals("1")) {
 
-                         Toast.makeText(getContext(), "Update On Open Circle", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getContext(), " Shared Successfully ", Toast.LENGTH_SHORT).show();
 
                     } else {
                         // Toast.makeText(getContext(), "Activity not found", Toast.LENGTH_SHORT).show();
@@ -435,10 +440,10 @@ public class ChecklistInsightsFragment extends Fragment {
         String baseUrl = ProductConfig.tasklist + para_str;
         namelist = new ArrayList<>();
         ArrayList<ChecklistModel> namelist = new ArrayList<>();
-        ChecklistModel defaultModel = new ChecklistModel();
-        defaultModel.setId("-1"); // Assign an ID for the default selection if needed
+        /*ChecklistModel defaultModel = new ChecklistModel();
+        defaultModel.setId("0"); // Assign an ID for the default selection if needed
         defaultModel.setName("Select Task");
-        namelist.add(defaultModel);
+        namelist.add(defaultModel);*/
         final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -453,10 +458,13 @@ public class ChecklistInsightsFragment extends Fragment {
                             model.setId(jsonObject.getString("id"));
                             model.setName(jsonObject.getString("tack_name"));
                             namelist.add(model);
+                            System.out.println("selec--=="+model.getId());
+                            dict_id.add(jsonObject.getString("id"));
                         }
 
                         // Populate the Spinner with task names after retrieving all the names
                         List<String> names = new ArrayList<>();
+
                         for (ChecklistModel models : namelist) {
                             names.add(models.getName());
                         }
@@ -464,7 +472,7 @@ public class ChecklistInsightsFragment extends Fragment {
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, items);
                         selecttask.setAdapter(adapter);
                     } else {
-                        defaultModel.setName("Select Task");
+                        //defaultModel.setName("Select Task");
                         // Handle case where result is not Success
                     }
                 } catch (JSONException e) {
@@ -516,12 +524,10 @@ public class ChecklistInsightsFragment extends Fragment {
                         entries.add(new PieEntry(Integer.parseInt(countOne), "achieved"));
 
                         ArrayList<Integer> colors = new ArrayList<>();
-                        for (int color : ColorTemplate.MATERIAL_COLORS) {
-                            colors.add(color);
-                        }
-                        for (int color : ColorTemplate.JOYFUL_COLORS) {
-                            colors.add(color);
-                        }
+
+// Add red and green colors
+                        colors.add(Color.GREEN);
+                        colors.add(Color.RED);
 
                         PieDataSet dataSet = new PieDataSet(entries, "Chart Label");
                         PieData data = new PieData(dataSet);

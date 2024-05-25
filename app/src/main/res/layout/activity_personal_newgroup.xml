@@ -112,6 +112,7 @@
                 android:layout_marginTop="@dimen/payu_dimen_10dp"
                 android:background="@drawable/border_box" />
 
+
             <Button
                 android:id="@+id/btn_create"
                 android:layout_width="@dimen/payu_dimen_150dp"
@@ -124,6 +125,16 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:background="@drawable/button"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note: You are able to add/remove users inside the group."
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/payu_dimen_18sp"
+                android:gravity="center"
+                android:layout_below="@+id/sumbit"/>
 
 
         </LinearLayout>

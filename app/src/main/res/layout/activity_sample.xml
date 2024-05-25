@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".SampleActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginTop="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/payu_dimen_16dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/today"
+                    android:layout_width="@dimen/payu_dimen_80dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/payu_dimen_10dp"
+                    android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_20dp"
+                    android:background="@drawable/editdate"
+                    android:text="Today"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/payu_dimen_14sp"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutcalentar"
+                android:layout_below="@+id/today"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/payu_dimen_5dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
+
+                <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:daysTextColor="@color/black"
+                    app:daysTextSize="@dimen/payu_dimen_14sp"
+                    app:weekTextSize="@dimen/payu_dimen_14sp"
+                    android:layout_marginBottom="@dimen/payu_dimen_5dp"
+                    app:textColorSelected="#000000"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#90FFC2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layoutcalentar"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter your Notes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/payu_dimen_20dp"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/linearlayour"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_box"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/txt_note"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/payu_dimen_50dp"
+                                android:hint="Enter your thoughts"
+                                android:textColorHint="@color/white"
+                                android:textColor="@color/white"
+                                android:layout_marginStart="@dimen/payu_dimen_10dp"
+                                android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                                android:background="@drawable/border_box" />
+
+                            <Button
+                                android:id="@+id/addbutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/payu_dimen_50dp"
+                                android:text="SAVE"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/button"
+                                android:layout_marginEnd="@dimen/payu_dimen_10dp"/>
+
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/addbutton"
+                            android:id="@+id/recycleview"
+                            tools:listitem="@layout/educationadd"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/payu_dimen_10dp"
+                android:layout_below="@+id/tableLayout">
+
+                <LinearLayout
+                    android:id="@+id/add_button"
+                    android:layout_width="@dimen/payu_dimen_110dp"
+                    android:layout_height="@dimen/payu_dimen_40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="@dimen/payu_dimen_10dp"
+                    android:layout_marginTop="@dimen/payu_dimen_10dp"
+                    android:layout_marginEnd="@dimen/payu_dimen_10dp"
+                    android:layout_marginBottom="@dimen/payu_dimen_10dp"
+                    android:background="@drawable/button"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>
