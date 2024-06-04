@@ -131,7 +131,6 @@ public class EducationExistingActivity extends AppCompatActivity {
                 subject = edittext.getText().toString();
                 if (subject.isEmpty()) {
                     edittext.requestFocus();
-                    Toast.makeText(EducationExistingActivity.this, "Subject is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Set status based on checkbox state

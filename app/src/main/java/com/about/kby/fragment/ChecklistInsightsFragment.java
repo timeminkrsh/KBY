@@ -526,8 +526,8 @@ public class ChecklistInsightsFragment extends Fragment {
                         ArrayList<Integer> colors = new ArrayList<>();
 
 // Add red and green colors
-                        colors.add(Color.GREEN);
                         colors.add(Color.RED);
+                        colors.add(Color.parseColor("#8BC34A"));
 
                         PieDataSet dataSet = new PieDataSet(entries, "Chart Label");
                         PieData data = new PieData(dataSet);

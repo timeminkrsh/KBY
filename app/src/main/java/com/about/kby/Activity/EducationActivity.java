@@ -72,7 +72,6 @@ public class EducationActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
 

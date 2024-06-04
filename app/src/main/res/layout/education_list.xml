@@ -31,7 +31,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:hint="subject"
+                android:hint="Task"
                 android:padding="@dimen/payu_dimen_5dp"
                 android:background="@drawable/border_blue"
                 android:layout_centerHorizontal="true"

@@ -204,7 +204,7 @@
                             android:layout_gravity="start"
                             android:textAlignment="textStart"
                             android:layout_height="wrap_content"
-                            android:hint="subject"
+                            android:hint="Task"
                             android:padding="@dimen/payu_dimen_5dp"
                             android:background="@drawable/border_blue"
                             android:layout_centerHorizontal="true"

@@ -15,7 +15,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,13 +37,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
          String profileUpdate = Bsession.getInstance().getUser_name(HomeActivity.this);
 
-         if(profileUpdate.isEmpty()){
+         /*if(profileUpdate.isEmpty()){
              AlertDialog.Builder builder = new AlertDialog.Builder(this);
              builder.setTitle("Profile Update")
                      .setMessage("Plaese update your profile to proceed?")
@@ -92,7 +89,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                          }
                      })
                      .show();
-         }
+         }*/
 
         education.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,25 +139,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
          bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
-         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.infos));
+         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.cart));
          bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.group));
-         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.terms));
+         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.infos));
          bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
              @Override
              public void onShowItem(MeowBottomNavigation.Model item) {
                  //initialize intent
                  Intent intent = null;
-
                  if (item.getId() == 4) {
-                     intent = new Intent(HomeActivity.this, DateActivity.class);
+                     intent = new Intent(HomeActivity.this, AboutusActivity.class);
                  }else if (item.getId() == 3) {
                      intent = new Intent(HomeActivity.this, Group2Activity.class);
                  }else if (item.getId() == 2) {
-                     intent = new Intent(HomeActivity.this, AboutusActivity.class);
+                     intent = new Intent(HomeActivity.this, ShoppingActivity.class);
                  } else if (item.getId() == 1) {
-                    // intent = new Intent(HomeActivity.this, HomeActivity.class);
                  }
-
                  if (intent != null) {
                      startActivity(intent);
                  }
@@ -168,7 +162,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
          });
 
          bottomNavigation.show(1, true);
-
          bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
              @Override
              public void onClickItem(MeowBottomNavigation.Model item) {
@@ -202,6 +195,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_about) {
 
             intent = new Intent(getApplicationContext(), AboutusActivity.class);
+            startActivity(intent);
+
+        }else if (id == R.id.nav_profile) {
+            intent = new Intent(getApplicationContext(), DateActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_logout) {

@@ -63,10 +63,10 @@ public class OpenGroupChecklistAdapter extends RecyclerView.Adapter<OpenGroupChe
         }
         ArrayList<Integer> colors = new ArrayList<>();
 
-// Add red and green colors
-        colors.add(Color.GREEN);
-        colors.add(Color.RED);
 
+
+        colors.add(Color.parseColor("#8BC34A"));
+        colors.add(Color.RED);
         dataSet.setColors(colors);
         holder.pieChart.setData(data);
         holder.pieChart.invalidate(); // refresh chart

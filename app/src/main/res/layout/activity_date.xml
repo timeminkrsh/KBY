@@ -6,113 +6,145 @@
 
 <include layout="@layout/toolbar"/>
 
-        <RelativeLayout
-            android:layout_below="@+id/toolbar"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/black"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_box"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-            <LinearLayout
-                android:id="@+id/lin"
+
+            <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/border_box"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:drawablePadding="10dp"
-                    android:focusableInTouchMode="true"
-                    android:hint="Enter your name "
-                    android:gravity="start"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin2"
-                android:layout_below="@+id/lin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/border_box"
-                android:orientation="horizontal"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="true"
                 android:gravity="start"
-                android:padding="5dp">
-
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:drawablePadding="10dp"
-                    android:gravity="start"
-                    android:focusable="false"
-                    android:focusableInTouchMode="true"
-                    android:hint="Mobile Number "
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/sumbit"
-                android:layout_below="@+id/lin2"
-                android:layout_width="150dp"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button"
-                android:layout_gravity="center"
-                android:text="Update"
-                android:textAllCaps="false"
+                android:hint="Enter your name "
+                android:padding="8dp"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                />
-            <TextView
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_box"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note: Updating your name is mandatory which allow others to identify you."
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="start"
+                android:hint="Mobile Number "
+                android:padding="8dp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="@dimen/payu_dimen_18sp"
-                android:gravity="center"
-                android:layout_below="@+id/sumbit"/>
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-            <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-                android:id="@+id/bottomNavigation"
+        <LinearLayout
+            android:id="@+id/lin3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lin2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_box"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <EditText
+                android:id="@+id/edt_address"
                 android:layout_width="match_parent"
-                android:layout_gravity="bottom"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                app:mbn_circleColor="@color/Green"
-                app:mbn_countBackgroundColor="@color/Green"
-                app:mbn_countTextColor="#FFFFFF"
-                app:mbn_defaultIconColor="@color/table"
-                app:mbn_rippleColor="#3A3535"
-                app:mbn_selectedIconColor="#ffffff" />
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:focusableInTouchMode="true"
+                android:gravity="start"
+                android:hint="Address "
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_currentlocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lin3"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:text="Get current location"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
 
-        </RelativeLayout>
+        <Button
+            android:id="@+id/sumbit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_currentlocation"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
+        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            app:mbn_circleColor="@color/Green"
+            app:mbn_countBackgroundColor="@color/Green"
+            app:mbn_countTextColor="#FFFFFF"
+            app:mbn_defaultIconColor="@color/table"
+            app:mbn_rippleColor="#3A3535"
+            app:mbn_selectedIconColor="#ffffff" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

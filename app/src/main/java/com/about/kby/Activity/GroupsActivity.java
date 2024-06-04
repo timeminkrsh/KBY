@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -67,16 +68,16 @@ public class GroupsActivity extends AppCompatActivity {
 
     Spinner fromcalantor;
     String selectedDateStr;
-    Button today;
+    Button today,addbutton;
     TextView txt_date;
     static ProgressDialog progressDialog;
-    EditText txt_note;
-    LinearLayout addbutton,editbutton;
+    EditText txt_note,et_date;
+    LinearLayout editbutton;
     RecyclerView recycleview;
     LinearLayout linearlayour;
+    DatePickerDialog datePicker;
     String currentNote;
     int currentNotePosition;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +96,7 @@ public class GroupsActivity extends AppCompatActivity {
         txt_toolbar = findViewById(R.id.txt_toolbar);
         backimage = findViewById(R.id.backimage);
         image = findViewById(R.id.image);
+        et_date = findViewById(R.id.et_date);
         txt_note = findViewById(R.id.txt_note);
         txt_date = findViewById(R.id.txt_date);
         today = findViewById(R.id.today);
@@ -107,20 +109,30 @@ public class GroupsActivity extends AppCompatActivity {
         progressDialog2.setMessage("Loading.....");
         final Calendar defaultSelectedDate = getInstance();
 
-        ll_opencircle.setOnClickListener(new View.OnClickListener() {
+        final Calendar calendar = Calendar.getInstance();
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        datePicker = new DatePickerDialog(GroupsActivity.this);
+        et_date.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GroupsActivity.this,OpenGroupActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                datePicker = new DatePickerDialog(GroupsActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
+                        //et_date.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        selectedDateStr = year + "-" + (month + 1) + "-" + dayOfMonth;
+                        txt_date.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
+                        System.out.println("Date===="+txt_date);
+                        getnotereport(selectedDateStr);
+                    }
+                }, year, month, day);
+                datePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
+                // show the dialog
+                datePicker.show();
             }
         });
-        ll_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GroupsActivity.this, PersonalExistingActivity.class);
-                startActivity(intent);
-            }
-        });
+
         backimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,7 +193,7 @@ public class GroupsActivity extends AppCompatActivity {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 selectedDateStr = dateFormat.format(currentDate.getTime());
                 System.out.println("yyyy-M-d==" + selectedDateStr);
-                txt_date.setText("Today");
+                txt_date.setText(dateFormat.format(currentDate.getTime()));
                 getnotereport(selectedDateStr);
                 // Do something with today's date, for example, display it in a toast
                 // Toast.makeText(getContext(), "Today's date: " + todayDateStr, Toast.LENGTH_SHORT).show();
@@ -359,7 +371,6 @@ public class GroupsActivity extends AppCompatActivity {
                 holder.iv_edit.setVisibility(View.GONE);
                 holder.et_notes.requestFocus();
                 holder.et_notes.setSelection(holder.et_notes.getText().length());
-
             });
             holder.iv_save.setOnClickListener(v -> {
                 String noteTxt = holder.et_notes.getText().toString();
@@ -375,6 +386,7 @@ public class GroupsActivity extends AppCompatActivity {
                     String para2 = "&title=" + noteTxt;
                     String baseUrl = ProductConfig.notes_update + para_str + para1 + para2;
                     System.out.println("base=" + baseUrl);
+                    Toast.makeText(GroupsActivity.this, "Note is saved", Toast.LENGTH_SHORT).show();
                     progressDialog.show();
 
                     final StringRequest jsObjRequest = new StringRequest(Request.Method.GET, baseUrl, new Response.Listener<String>() {

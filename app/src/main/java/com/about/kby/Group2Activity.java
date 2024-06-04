@@ -10,10 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.about.kby.Activity.AboutusActivity;
-import com.about.kby.Activity.GroupsActivity;
+import com.about.kby.Activity.CommingSoonActivity;
 import com.about.kby.Activity.HomeActivity;
-import com.about.kby.Activity.OpenGroupActivity;
-import com.about.kby.Activity.PersonalExistingActivity;
+import com.about.kby.Activity.ShoppingActivity;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 public class Group2Activity extends AppCompatActivity {
@@ -36,14 +35,14 @@ public class Group2Activity extends AppCompatActivity {
         ll_opencircle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Group2Activity.this, OpenGroupActivity.class);
+                Intent intent = new Intent(Group2Activity.this, CommingSoonActivity.class);
                 startActivity(intent);
             }
         });
         ll_personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Group2Activity.this, PersonalExistingActivity.class);
+                Intent intent = new Intent(Group2Activity.this, CommingSoonActivity.class);
                 startActivity(intent);
             }
         });
@@ -62,9 +61,9 @@ public class Group2Activity extends AppCompatActivity {
             }
         });
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.infos));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.cart));
         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.group));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.terms));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.infos));
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
@@ -72,9 +71,9 @@ public class Group2Activity extends AppCompatActivity {
                 Intent intent = null;
 
                 if (item.getId() == 4) {
-                    intent = new Intent(Group2Activity.this, DateActivity.class);
-                } else if (item.getId() == 2) {
                     intent = new Intent(Group2Activity.this, AboutusActivity.class);
+                } else if (item.getId() == 2) {
+                    intent = new Intent(Group2Activity.this, ShoppingActivity.class);
                 } else if (item.getId() == 1) {
                     intent = new Intent(Group2Activity.this, HomeActivity.class);
                 }

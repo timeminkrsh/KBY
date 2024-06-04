@@ -145,23 +145,25 @@
 
             <TextView
                 android:id="@+id/shares"
-                android:layout_below="@+id/recycle"
                 android:layout_width="@dimen/payu_dimen_120dp"
                 android:layout_height="40dp"
-                android:layout_margin="20dp"
+                android:layout_below="@+id/recycle"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/editdate"
                 android:drawableEnd="@android:drawable/arrow_down_float"
                 android:focusable="false"
                 android:gravity="center"
                 android:hint="Share With"
                 android:paddingEnd="@dimen/payu_dimen_10dp"
-                android:layout_marginTop="@dimen/payu_dimen_20dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
 
 

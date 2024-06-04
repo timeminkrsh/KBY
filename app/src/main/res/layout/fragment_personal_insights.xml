@@ -304,10 +304,7 @@
                 android:textColorHint="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:visibility="visible" />
-
-
-
+                android:visibility="gone" />
         </RelativeLayout>
 
     </ScrollView>

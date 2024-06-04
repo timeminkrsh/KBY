@@ -2,12 +2,22 @@ package com.about.kby;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,27 +42,34 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class DateActivity extends AppCompatActivity {
-    EditText et_name,et_phone;
+    EditText et_name,et_phone,edt_address;
     Button sumbit;
     MeowBottomNavigation bottomNavigation;
     TextView txt_toolbar;
+    TextView tvCurrentLocation;
     ImageView backimage;
+    ProgressDialog progressDialog,progressDialog2;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date);
         et_name = findViewById(R.id.et_name);
+        edt_address = findViewById(R.id.edt_address);
         backimage = findViewById(R.id.backimage);
         et_phone = findViewById(R.id.et_phone);
         sumbit = findViewById(R.id.sumbit);
         bottomNavigation = findViewById(R.id.bottomNavigation);
         txt_toolbar = findViewById(R.id.txt_toolbar);
+        tvCurrentLocation = findViewById(R.id.tv_currentlocation);
         et_name.setText(Bsession.getInstance().getUser_name(DateActivity.this));
         txt_toolbar.setText("Profile");
         String name = Bsession.getInstance().getUser_id(DateActivity.this);
@@ -88,6 +105,20 @@ public class DateActivity extends AppCompatActivity {
 
                 if (intent != null) {
                     startActivity(intent);
+                }
+            }
+        });
+        tvCurrentLocation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tvCurrentLocation.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in));
+                if (checkLocationPermission()) {
+                    // Request location updates
+                    requestLocationUpdates();
+                } else {
+                    // Request location permissions
+                    ActivityCompat.requestPermissions(DateActivity.this,
+                            new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                            1);
                 }
             }
         });
@@ -172,6 +203,72 @@ public class DateActivity extends AppCompatActivity {
         });
 
     }
+    private boolean checkLocationPermission() {
+        return ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+    private void requestLocationUpdates() {
+        ProgressDialog progressDialogg = new ProgressDialog(this);
+        this.progressDialog2 = progressDialogg;
+        progressDialog2.setMessage("Searching Location.....");
+        progressDialog2.show();
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            // Use either NETWORK_PROVIDER or GPS_PROVIDER depending on your requirements
+            String provider = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ?
+                    LocationManager.NETWORK_PROVIDER :
+                    LocationManager.GPS_PROVIDER;
+
+            // Register the listener with the Location Manager to receive location updates
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                // ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                // public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                // int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.requestSingleUpdate(provider, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    // Handle the received location data
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+
+                    // Convert latitude and longitude to address
+                    Geocoder geocoder = new Geocoder(DateActivity.this, Locale.getDefault());
+                    try {
+                        progressDialog2.dismiss();
+                        List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                        if (addresses != null && addresses.size() > 0) {
+                            Address address = addresses.get(0);
+                            String fullAddress = address.getAddressLine(0);
+                            edt_address.setText(fullAddress);
+                        } else {
+                            Toast.makeText(DateActivity.this, "Unable to fetch address", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        progressDialog2.dismiss();
+                    }
+                }
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
+                @Override
+                public void onProviderEnabled(String provider) {
+                }
+
+                @Override
+                public void onProviderDisabled(String provider) {
+                    progressDialog2.dismiss();
+                }
+            }, null);
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -179,5 +276,6 @@ public class DateActivity extends AppCompatActivity {
         bottomNavigation.show(1, true);
         super.onBackPressed();
     }
+
 
 }
